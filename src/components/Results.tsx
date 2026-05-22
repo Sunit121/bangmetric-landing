@@ -1,0 +1,90 @@
+import React from "react";
+import Image from "next/image";
+import MotionReveal from "@/components/MotionReveal";
+
+export default function Results() {
+  const metrics = [
+    {
+      icon: "/images/icon-1.png",
+      title: (
+        <>
+          20&ndash;40%<br />faster MTTR
+        </>
+      ),
+    },
+    {
+      icon: "/images/icon-2.png",
+      title: (
+        <>
+          15&ndash;30%<br />higher first<br />contact resolution
+        </>
+      ),
+    },
+    {
+      icon: "/images/icon-3.png",
+      title: (
+        <>
+          25%+ analyst<br />productivity<br />improvement
+        </>
+      ),
+    },
+    {
+      icon: "/images/icon-4.png",
+      title: (
+        <>
+          Fewer emergency<br />changes &amp; lower<br />change failure rate
+        </>
+      ),
+    },
+    {
+      icon: "/images/icon-5.png",
+      title: (
+        <>
+          Reduced cost per-<br />ticket through clarity<br />and automation
+        </>
+      ),
+    },
+  ];
+
+  return (
+    <section className="pt-20 bg-white overflow-hidden">
+      <div className="max-w-[1100px] mx-auto px-3 md:px-4">
+
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <MotionReveal as="h2" className="text-3xl sm:text-4xl md:text-[44px] font-medium text-slate-900 tracking-tight leading-tight">
+            The Results Our Clients See
+          </MotionReveal>
+          <MotionReveal as="p" className="mt-4 text-lg md:text-[22px] text-slate-900" delay={0.1}>
+            When ITSM is designed properly, the numbers move
+          </MotionReveal>
+        </div>
+
+        {/* 5-Column Grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
+          {metrics.map((item, index) => (
+            <div
+              key={index}
+              className="group rounded-md bg-white border border-gray-200 p-4 sm:p-6 flex flex-col hover:bg-[#AB9AE8] hover:text-white hover:border-[#AB9AE8] transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#AB9AE8]/40 min-h-[160px] sm:min-h-[180px]"
+            >
+              <div className="mb-4 sm:mb-6 flex-shrink-0">
+                <Image
+                  src={item.icon}
+                  alt="Result Icon"
+                  width={60}
+                  height={60}
+                  className="w-12 sm:w-[60px] h-auto object-contain transition-all duration-300 group-hover:brightness-0 group-hover:invert group-hover:scale-110 group-hover:-rotate-3"
+                />
+              </div>
+
+              <MotionReveal as="p" className="results-metric-text font-medium text-black group-hover:text-white leading-snug" delay={index * 0.08}>
+                {item.title}
+              </MotionReveal>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+}

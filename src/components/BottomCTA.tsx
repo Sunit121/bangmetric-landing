@@ -1,0 +1,44 @@
+"use client";
+
+import React from "react";
+import Link from "next/link";
+import MotionReveal from "@/components/MotionReveal";
+
+export default function BottomCTA() {
+  return (
+    <section
+      className="py-16 md:py-24 relative overflow-hidden bg-black bg-no-repeat"
+      style={{
+        backgroundImage: "url('/images/bottom-banner.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center right",
+      }}
+    >
+      <div className="max-w-[1100px] mx-auto px-3 md:px-4 relative z-10">
+        <div className="max-w-2xl text-left space-y-6">
+          <div className="space-y-2">
+            <MotionReveal as="p" className="text-white text-base sm:text-lg md:text-xl font-normal tracking-wide opacity-90">
+              Read Customer Success Stories & News on
+            </MotionReveal>
+            <MotionReveal
+              as="h2"
+              className="text-4xl sm:text-5xl md:text-[3.2rem] font-bold text-white tracking-tight leading-tight"
+              delay={0.1}
+            >
+              IT Service Management
+            </MotionReveal>
+          </div>
+
+          <div className="pt-2">
+            <Link
+              href="#contact"
+              className="inline-flex items-center justify-center px-8 py-2 text-sm sm:text-base font-medium rounded-[5px] bg-[#9562EB] text-white hover:bg-[#834be3] transition-all duration-300 active:scale-95 hover:shadow-lg hover:shadow-[#9562EB]/30"
+            >
+              Know More
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
