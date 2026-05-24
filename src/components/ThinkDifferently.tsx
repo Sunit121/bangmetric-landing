@@ -39,7 +39,7 @@ export default function ThinkDifferently() {
           }
         }
       `}} />
-      <div className="max-w-[1100px] mx-auto px-3 md:px-4">
+      <div className="max-w-[1100px] mx-auto px-3 md:px-4 relative z-20">
         <div className="text-center mb-16 md:mb-20">
           <MotionReveal
             as="h2"

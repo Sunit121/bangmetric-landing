@@ -92,6 +92,7 @@ export default function ScrollCube() {
           height: startHeight,
           scale: 1,
           rotation: 0,
+          zIndex: 10,
         });
 
         // Helper to calculate Y center for intermediate sections
@@ -160,6 +161,7 @@ export default function ScrollCube() {
             y: yMethodology,
             rotation: 180,
             scale: 0.9,
+            zIndex: 10,
             ease: "power1.inOut",
           })
           // 6. Move to WhyChooseUs and land perfectly at the end placeholder
@@ -170,6 +172,7 @@ export default function ScrollCube() {
             height: endHeight,
             scale: 1,
             rotation: 360,
+            zIndex: 30,
             ease: "power1.inOut",
           });
       };
@@ -202,7 +205,7 @@ export default function ScrollCube() {
     <div
       ref={cubeRef}
       id="animated-scroll-cube"
-      className="absolute z-30 pointer-events-none select-none"
+      className="absolute z-10 pointer-events-none select-none"
       style={{
         opacity: 0, // Hidden until GSAP measures and updates positioning to prevent flash
         transformOrigin: "center center",

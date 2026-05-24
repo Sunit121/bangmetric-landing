@@ -27,7 +27,7 @@ export default function WhatWeBuild() {
       className="py-24 relative overflow-hidden bg-black text-white bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: "url('/images/build-with-service-bg.png')" }}
     >
-      <div className="max-w-[1100px] mx-auto px-3 md:px-4 relative z-10">
+      <div className="max-w-[1100px] mx-auto px-3 md:px-4 relative z-20">
 
         {/* Title */}
         <div className="text-center mb-24">

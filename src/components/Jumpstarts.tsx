@@ -6,7 +6,7 @@ import MotionReveal from "@/components/MotionReveal";
 export default function Jumpstarts() {
   return (
     <section id="jumpstarts" className="py-20 md:py-28 bg-white overflow-hidden">
-      <div className="container mx-auto px-3 md:px-4 max-w-[1100px]">
+      <div className="container mx-auto px-3 md:px-4 max-w-[1100px] relative z-20">
 
         {/* Top area: Title on the left, Cube image on the right */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8 mb-14">

@@ -27,7 +27,7 @@ export default function BangmetricWay() {
 
   return (
     <section id="methodology" className="py-24 bg-white overflow-hidden">
-      <div className="max-w-[1100px] mx-auto px-6 md:px-8">
+      <div className="max-w-[1100px] mx-auto px-6 md:px-8 relative z-20">
 
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-20">

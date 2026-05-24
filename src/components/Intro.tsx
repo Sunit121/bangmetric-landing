@@ -4,7 +4,7 @@ import MotionReveal from "@/components/MotionReveal";
 export default function Intro() {
   return (
     <section id="intro" className="py-15 bg-slate-50 overflow-hidden">
-      <div className="max-w-[1100px] mx-auto px-3 md:px-4">
+      <div className="max-w-[1100px] mx-auto px-3 md:px-4 relative z-20">
         <div className="flex flex-col md:flex-row gap-12 items-start">
 
           {/* Left Column: Heading */}
