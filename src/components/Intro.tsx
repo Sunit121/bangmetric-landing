@@ -17,7 +17,6 @@ export default function Intro() {
                 Built on{" "}
                 <span className="text-brand-green relative inline-block">
                   ServiceNow
-                  <span className="absolute left-0 bottom-1 w-full h-[6px] bg-brand-green/20 -z-10 rounded-full"></span>
                 </span>
               </span>
             </MotionReveal>
