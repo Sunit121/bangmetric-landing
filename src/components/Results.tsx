@@ -47,7 +47,7 @@ export default function Results() {
   ];
 
   return (
-    <section className="pt-20 bg-white overflow-hidden">
+    <section id="results" className="pt-20 bg-white overflow-hidden">
       <div className="max-w-[1100px] mx-auto px-3 md:px-4">
 
         {/* Header */}

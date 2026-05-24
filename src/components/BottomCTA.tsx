@@ -7,7 +7,7 @@ import MotionReveal from "@/components/MotionReveal";
 export default function BottomCTA() {
   return (
     <section
-      className="py-16 md:py-24 relative overflow-hidden bg-black bg-no-repeat"
+      className="py-16 md:py-24 relative z-40 overflow-hidden bg-black bg-no-repeat"
       style={{
         backgroundImage: "url('/images/bottom-banner.png')",
         backgroundSize: "cover",

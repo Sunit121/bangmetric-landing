@@ -308,6 +308,19 @@ h6 {
   font-size: 14px !important;
 }
 
+@keyframes cubePureFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+.cube-pure-float {
+  animation: cubePureFloat 5s ease-in-out infinite;
+}
+
 .jumpstarts-p {
   font-size: 16px !important;
 }

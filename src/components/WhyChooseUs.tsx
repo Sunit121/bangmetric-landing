@@ -23,7 +23,7 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    <section id="why-choose-us" className="pt-24 pb-0 bg-[#F3F3F5] overflow-hidden">
+    <section id="why-choose-us" className="pt-24 pb-0 bg-[#F3F3F5] relative z-10 overflow-visible">
       <div className="max-w-[1100px] mx-auto px-3 md:px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-12 lg:gap-y-0">
 
@@ -67,14 +67,16 @@ export default function WhyChooseUs() {
           </div>
 
           <div className="w-full lg:col-start-1 lg:row-start-2 flex justify-center lg:justify-start items-end mt-auto pb-0">
-            <Image
-              src="/images/whyChoose-icon.png"
-              alt="Why Choose Us Visual"
-              width={480}
-              height={480}
-              className="w-full max-w-[280px] sm:max-w-[450px] object-contain select-none pointer-events-none space-drift-animate origin-bottom"
-              priority
-            />
+            <div id="cube-end-placeholder" className="w-full max-w-[280px] sm:max-w-[450px] aspect-square relative flex justify-center lg:justify-start items-end translate-y-1/2">
+              <Image
+                src="/images/cube.png"
+                alt="Why Choose Us Visual"
+                width={480}
+                height={480}
+                className="cube-end-image w-full h-full object-contain select-none pointer-events-none space-drift-animate origin-bottom transition-opacity duration-300"
+                priority
+              />
+            </div>
           </div>
 
         </div>

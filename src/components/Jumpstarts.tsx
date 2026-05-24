@@ -25,14 +25,14 @@ export default function Jumpstarts() {
             </MotionReveal>
           </div>
 
-          {/* Cube Image */}
-          <div className="flex-shrink-0 flex justify-center md:justify-end">
+          {/* Cube Image Placeholder */}
+          <div id="cube-start-placeholder" className="flex-shrink-0 flex justify-center md:justify-end w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 relative">
             <Image
               src="/images/cube.png"
               alt="3D crystal cube"
               width={300}
               height={300}
-              className="cube-spin-float-animate w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 object-contain select-none pointer-events-none"
+              className="cube-start-image cube-spin-float-animate w-full h-full object-contain select-none pointer-events-none transition-opacity duration-300"
               priority
             />
           </div>

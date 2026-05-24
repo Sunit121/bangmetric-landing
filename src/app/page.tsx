@@ -11,6 +11,7 @@ import BangmetricWay from "@/components/BangmetricWay";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import BottomCTA from "@/components/BottomCTA";
 import Footer from "@/components/Footer";
+import ScrollCube from "@/components/ScrollCube";
 
 export default function Home() {
   return (
@@ -20,6 +21,9 @@ export default function Home() {
 
       {/* Main Content Sections */}
       <main className="flex-1 relative">
+        {/* Scroll-Triggered Floating Cube */}
+        <ScrollCube />
+
         {/* Hero Banner Section */}
         <Hero />
 
