@@ -6,9 +6,8 @@ import Jumpstarts from "@/components/Jumpstarts";
 import ThinkDifferently from "@/components/ThinkDifferently";
 import WhatWeBuild from "@/components/WhatWeBuild";
 import Results from "@/components/Results";
-import Callout from "@/components/Callout";
 import BangmetricWay from "@/components/BangmetricWay";
-import WhyChooseUs from "@/components/WhyChooseUs";
+import ITOMWhyChoose from "@/components/ITOMWhyChoose";
 import BottomCTA from "@/components/BottomCTA";
 import Footer from "@/components/Footer";
 import ScrollCube from "@/components/ScrollCube";
@@ -29,81 +28,128 @@ const spmIntroHeading = (
 );
 
 const spmIntroParagraphs = [
-  "Strategic Portfolio Management (SPM) shouldn't be about just tracking projects. It's about aligning every dollar of execution to your strategic business outcomes.",
-  "We implement ServiceNow SPM to give you clear line-of-sight from enterprise strategy down to individual team delivery, cutting through the noise of disjointed planning tools.",
-  "By focusing on value streams and eliminating administrative overhead, we help PMOs and strategy leaders make faster, data-driven investment decisions.",
+  "Many organizations struggle to connect vision, investment, and execution in a single, clear flow. At BANGMETRIC, we design Strategic Portfolio Management from the decision back, then enable it with ServiceNow SPM.",
+  "We create clarity across funding, priorities, and resources, so leaders can see what to invest in, what to stop, and where value is truly delivered. ServiceNow is the enabler. Outcome-driven design is what turns strategy into measurable results. ",
 ];
 
 const spmJumpstartCards = [
   {
     title: "45-Day SPM Foundation",
-    description: "Demand Management, Resource Capacity Planning basics, Project Portfolio Management (PPM), and core dashboards for instant visibility into inflight work.",
-    tagline: "Align execution to strategy. Fast.",
+    description: (
+      <>
+        A rightsized, decision-ready foundation.
+        <br />
+        Demand → Portfolio → PPM → Roadmaps (core essentials).
+        <br />
+        Designed for organisations that need clarity fast.
+      </>
+    ),
   },
   {
-    title: "60-Day SPM Pro + Agile",
-    description: "Enterprise Agile Planning, Scenario Planning, continuous funding models, and integration with your DevOps toolchain for unified portfolio tracking.",
+    title: "60-Day SPM Pro",
+    description: (
+      <>
+        For organisations ready to unlock the full SPM suite:
+        <br />
+        Strategic planning, scenario modelling, resource capacity,
+        <br />
+        APM basics, and AI-assisted prioritisation.
+        <br />
+        Delivered deliberately, not rushed.
+      </>
+    ),
   },
 ];
 
 const spmThinkNodes = [
-  { bold: "Outcome delivery", detail: "over project tracking" },
-  { bold: "Continuous planning", detail: "(adapt to change without breaking the budget)" },
-  { bold: "Value streams", detail: "(fund products, not just projects)" },
-  { bold: "Connected visibility", detail: "(from strategy to execution)" },
-  { bold: "Data-driven decisions", detail: "over guesswork" },
+  { bold: "We design for decisions, not dashboards", detail: "SPM must help leaders choose — not just view charts." },
+  { bold: "We emphasise flow and value, not admin", detail: "Less reporting overhead, more insight." },
+  { bold: "We apply AI with intent", detail: "Guided prioritisation, capacity insights, value modelling, and scenario planning where it actually helps." },
+  { bold: "We connect strategy to execution", detail: "Objectives → demands → projects → resources → value." },
+  { bold: "We right-size SPM for the midmarket", detail: "Lean, fast, practical — without enterprise bloat." },
 ];
 
-// Reusing the 6-card grid layout like ITOM
-const spmGridCards = [
-  { title: "Demand Management", image: "/images/core-itsm.png" },
-  { title: "Project Portfolio", image: "/images/itelligence.png" },
-  { title: "Resource Management", image: "/images/core-itsm-mob.png" },
-  { title: "Enterprise Agile", image: "/images/itelligence-mob.png" },
-  { title: "Scenario Planning", image: "/images/build-with-service-bg.png" },
-  { title: "Strategy Alignment", image: "/images/banner-image.png" },
+const spmOverlapCards = [
+  {
+    title: "Strategic Planning & Alignment",
+    image: "/images/strategic.png",
+    features: [
+      "Objectives and Key Results (OKRs)",
+      "Strategy → Investment alignment",
+      "Scenario planning & what if modelling",
+      "Roadmaps that reflect real capacity"
+    ]
+  },
+  {
+    title: "Portfolio & Investment Management",
+    image: "/images/portfolio.png",
+    features: [
+      "Demand intake and evaluation",
+      "Portfolio scoring and prioritisation",
+      "Investment funding and tracking",
+      "Multi-level visibility (enterprise → portfolios → teams)"
+    ]
+  },
+  {
+    title: "Project & Delivery Management",
+    image: "/images/project-and-delivery.png",
+    features: [
+      "Predictable, transparent PPM",
+      "Agile, hybrid, SAFe, or traditional work",
+      "Resource and capacity planning",
+      "Collaborative Work Management"
+    ]
+  },
+  {
+    title: "Application & Innovation Portfolio",
+    image: "/images/application-and-innovation.png",
+    features: [
+      "Application Portfolio Management (APM)",
+      "TCO, risk, lifecycle health",
+      "Innovation backlog management",
+      "AI-supported idea triage"
+    ]
+  },
+  {
+    title: "Intelligence & Automation",
+    image: "/images/intelligence-and-automation.png",
+    features: [
+      "Now Assist for SPM (AI)",
+      "Predictive resource insights",
+      "Budget/variance signals",
+      "Automated workflows and governance"
+    ]
+  }
 ];
 
 const spmMetrics = [
   {
     icon: "/images/icon-1.png",
-    title: (
-      <>
-        30–50%<br />faster time<br />to value
-      </>
-    ),
+    title: "Real transparency into budgets, resources, and priority",
   },
   {
     icon: "/images/icon-2.png",
-    title: (
-      <>
-        25% reduction<br />in low-value<br />initiatives
-      </>
-    ),
+    title: "Clarity on what to fund (and what to stop)",
   },
   {
     icon: "/images/icon-3.png",
-    title: (
-      <>
-        Clear visibility<br />into resource<br />capacity
-      </>
-    ),
+    title: "Higher resource utilisation",
   },
   {
     icon: "/images/icon-4.png",
-    title: (
-      <>
-        Alignment of<br />work to<br />business strategy
-      </>
-    ),
+    title: "Reduced project cycle times",
   },
   {
     icon: "/images/icon-5.png",
-    title: (
-      <>
-        Unified backlog<br />across Agile<br />and traditional
-      </>
-    ),
+    title: "Faster decision-making with less friction",
+  },
+  {
+    icon: "/images/icon-1.png",
+    title: "Stronger alignment between business and IT",
+  },
+  {
+    icon: "/images/icon-2.png",
+    title: "Better value delivery, not just more output",
   },
 ];
 
@@ -116,20 +162,43 @@ const spmCalloutQuote = (
 
 const spmBangmetricSteps = [
   {
-    title: "Align & Define",
-    desc: "Map your strategic objectives and define the value streams that deliver them. No more disconnected goals.",
+    title: "Discover\n & Design",
+    desc: "We map your services, dependencies, risks, and operations culture, not just your IP ranges.",
+    image: "/images/discover.png"
   },
   {
-    title: "Demand & Prioritize",
-    desc: "Capture demand from across the business and objectively prioritize it against strategic impact and capacity.",
+    title: "Build for\n Speed",
+    desc: "We implement visibility and mapping with discipline, governance, and purpose.",
+    image: "/images/build-for-speed.png"
   },
   {
-    title: "Execute & Track",
-    desc: "Whether Agile, Waterfall, or Hybrid—track all execution in one place without forcing teams to change how they work.",
+    title: "Automate\n What\n Matters",
+    desc: "AI, anomaly detection, automation, and orchestration, aligned to real operational outcomes.",
+    image: "/images/automate.png"
   },
   {
-    title: "Measure & Pivot",
-    desc: "Use real-time dashboards to measure value delivered and quickly pivot funding when business priorities change.",
+    title: "Improve\n Continuously",
+    desc: "We tune the CMDB, maps, rules, and signals as your estate evolves.",
+    image: "/images/improve.png"
+  },
+];
+
+const spmWhyPoints = [
+  {
+    title: "Privately owned",
+    desc: "— no investor agenda",
+  },
+  {
+    title: "Midmarket specialists",
+    desc: "— simplicity, speed, and practical design",
+  },
+  {
+    title: "Out come obsessed",
+    desc: "— value, alignment, utilisation",
+  },
+  {
+    title: "End toend",
+    desc: "—  strategy → design → build → AI → optimisation ",
   },
 ];
 
@@ -138,52 +207,60 @@ export default function SPMPage() {
     <>
       <Header />
       <main className="flex-1 relative">
-        <ScrollCube />
         <Hero title="Strategic Portfolio Management" />
         <Intro
           heading={spmIntroHeading}
           paragraphs={spmIntroParagraphs}
         />
         <Jumpstarts
+          cubeImage="/images/spm-icon.png"
+          imageAnimationClass="bubble-float-animate"
           sectionTitle={
             <>
-              Our SPM Jumpstart Offering<br />
-              (Value Delivery, Without the Wait)
+              Our SPM Jumpstarts<br />
+              (Fast, Without the Noise)
             </>
           }
-          subtitle={
-            <>
-              Structured implementation pathways that
-              <br className="hidden sm:inline" />
-              accelerate your portfolio maturity.
-            </>
-          }
+          subtitle="BANGMETRIC delivers SPM implementations that are fast, clean, and thoughtfully designed, not template dumps."
           cards={spmJumpstartCards}
         />
-        <ThinkDifferently nodes={spmThinkNodes} />
+        <ThinkDifferently nodes={spmThinkNodes} variant="two-columns" />
         <WhatWeBuild
-          sectionTitle="What We Build with ServiceNow SPM"
-          layout="grid"
-          gridCards={spmGridCards}
+          sectionTitle={"What We Build With\nServiceNow SPM"}
+          subtitle="ServiceNow becomes the operating system for strategic clarity and portfolio execution."
+          layout="overlap"
+          overlapCards={spmOverlapCards}
         />
         <Results
           sectionTitle="The Results Our Clients See"
-          subtitle="When SPM is designed properly, investments drive outcomes"
+          subtitle="When SPM is designed properly, organisations gain"
           metrics={spmMetrics}
+          highlightText={
+            <>
+              You stop managing projects.<br />
+              You start managing the business.
+            </>
+          }
+          highlightColSpan={3}
         />
-        <Callout quote={spmCalloutQuote} />
         <BangmetricWay
           subtitle="When SPM is designed properly, execution matches strategy"
           steps={spmBangmetricSteps}
+          layout="vertical-cards"
         />
-        <WhyChooseUs
-          subtitle="You're not looking for another PMO tool."
-          rightHeading="You're looking for a strategic execution partner."
+        <ITOMWhyChoose
+          paragraphs={[
+            <React.Fragment key="1">
+              Because they don't want another system<br />
+              implementation. They want strategic clarity.
+            </React.Fragment>,
+          ]}
+          points={spmWhyPoints}
         />
         <BottomCTA
-          title="IT Operations Management"
-          subtitle="Discover how we transform operations with"
-          buttonHref="/it-operations-management"
+          subtitle="Read Customer Success Stories & News on"
+          title="Strategic Portfolio Management"
+          buttonHref="/strategic-portfolio-management"
         />
       </main>
       <Footer />

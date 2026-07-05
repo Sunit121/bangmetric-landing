@@ -19,12 +19,21 @@ interface GridCard {
   image: string;
 }
 
-interface WhatWeBuildProps {
-  sectionTitle?: string;
-  layout?: "overlay" | "grid" | "staggered";
-  overlayCards?: WhatWeBuildCard[];
-  gridCards?: GridCard[];
+export interface OverlapCard {
+  title: string;
+  image: string;
+  features: string[];
 }
+
+export interface WhatWeBuildProps {
+  sectionTitle?: string;
+  subtitle?: string;
+  layout?: "grid" | "staggered" | "overlap" | "overlay";
+  gridCards?: GridCard[];
+  overlayCards?: WhatWeBuildCard[];
+  overlapCards?: OverlapCard[];
+}
+
 const defaultOverlayCards: WhatWeBuildCard[] = [
   {
     title: "core-itsm",
@@ -59,10 +68,12 @@ const defaultOverlayCards: WhatWeBuildCard[] = [
 ];
 
 export default function WhatWeBuild({
-  sectionTitle = "What We Build with ServiceNow ITSM",
+  sectionTitle = "What We Build with\nServiceNow ITSM",
+  subtitle,
   layout = "overlay",
   overlayCards = defaultOverlayCards,
   gridCards = [],
+  overlapCards = [],
 }: WhatWeBuildProps) {
   return (
     <section
@@ -72,15 +83,15 @@ export default function WhatWeBuild({
     >
       <div className="max-w-[1536px] mx-auto px-3 md:px-4 relative z-20">
 
-        {/* Title */}
-        <div className="text-center mb-24">
-          <MotionReveal as="h2" className="text-3xl sm:text-4xl md:text-[44px] font-medium text-white tracking-tight leading-tight">
-            {sectionTitle}
-          </MotionReveal>
-        </div>
+        {(layout === "overlay" || layout === "staggered") && (
+          <div className="text-center mb-24">
+            <MotionReveal as="h2" className="text-3xl sm:text-4xl md:text-[44px] font-medium text-white tracking-tight leading-tight whitespace-pre-line">
+              {sectionTitle}
+            </MotionReveal>
+          </div>
+        )}
 
         {layout === "overlay" ? (
-          /* ITSM-style: 2-card overlay layout */
           <>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8">
               {overlayCards.map((card, idx) => (
@@ -115,7 +126,7 @@ export default function WhatWeBuild({
                       {card.features.map((feature, fIdx) => (
                         <li key={fIdx} className="flex items-start text-gray-200 leading-snug">
                           <span className="mr-3 mt-1.5 w-1 h-1 bg-white rounded-full flex-shrink-0"></span>
-                          <span>{feature}</span>
+                          <span className="font-normal">{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -127,6 +138,59 @@ export default function WhatWeBuild({
             {/* Spacer to account for absolute positioning overlap */}
             <div className="hidden lg:block h-16"></div>
           </>
+        ) : layout === "overlap" ? (
+          <div className="relative overflow-hidden -mx-3 md:-mx-4 px-3 md:px-4">
+            {/* Background glow on the right */}
+            <div className="absolute top-0 right-0 w-[60%] h-full opacity-15 blur-[150px] pointer-events-none" />
+
+            <div className="relative z-10 w-full">
+              {/* Header */}
+              <div className={`flex flex-col mb-15 gap-8 ${subtitle ? "lg:flex-row justify-between items-start" : "items-center text-center"}`}>
+                <MotionReveal as="h2" className={`text-3xl sm:text-4xl md:text-5xl text-white leading-tight font-normal whitespace-pre-line ${subtitle ? "lg:w-1/2" : "w-full"}`}>
+                  {sectionTitle}
+                </MotionReveal>
+                {subtitle && (
+                  <MotionReveal as="p" className="text-[17px] lg:w-1/3 pt-2 leading-relaxed">
+                    {subtitle}
+                  </MotionReveal>
+                )}
+              </div>
+
+              {/* Grid of overlapping cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 lg:gap-x-10 gap-y-10 md:gap-y-10">
+                {overlapCards?.map((card, idx) => (
+                  <div key={idx} className="relative w-full h-[380px] sm:h-[420px] lg:h-[450px] max-w-full mx-auto md:mx-0">
+                    {/* Image container (Top Left) */}
+                    <div className="absolute top-0 left-0 w-[85%] h-[90%] rounded-xl overflow-hidden">
+                      <Image
+                        src={card.image}
+                        alt={card.title}
+                        fill
+                        className="object-cover opacity-90"
+                      />
+                      {/* Dark gradient overlay on image for readability if needed */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                    </div>
+
+                    {/* Text container (Bottom Right) */}
+                    <div className="absolute bottom-0 right-0 w-[80%] h-[75%] rounded-xl p-6 md:p-8 flex flex-col z-10 border-white/5">
+                      <h3 className="text-2xl font-bold text-white mb-5 leading-snug whitespace-pre-line">
+                        {card.title}
+                      </h3>
+                      <ul className="space-y-2.5 text-[15px] sm:text-[18px] text-white">
+                        {card.features.map((feature, fIdx) => (
+                          <li key={fIdx} className="flex items-start">
+                            <span className="mr-3 mt-2 w-[4px] h-[4px] rounded-full bg-white flex-shrink-0" />
+                            <span className="leading-snug whitespace-pre-line font-normal">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         ) : layout === "staggered" ? (
           /* Staggered layout: image on left, text box overlapping on right, right column pushed down */
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 pb-32">
@@ -152,7 +216,7 @@ export default function WhatWeBuild({
                     {card.features.map((feature, fIdx) => (
                       <li key={fIdx} className="flex items-start">
                         <span className="mr-3 mt-2 w-[4px] h-[4px] bg-white rounded-full flex-shrink-0"></span>
-                        <span>{feature}</span>
+                        <span className="font-normal">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -178,7 +242,7 @@ export default function WhatWeBuild({
                   </div>
                   {/* Title overlay at bottom */}
                   <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <h3 className="text-white text-[15px] sm:text-[17px] font-bold leading-snug">
+                    <h3 className="text-white text-[15px] sm:text-[16px] font-bold leading-snug">
                       {card.title}
                     </h3>
                   </div>

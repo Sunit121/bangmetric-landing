@@ -9,6 +9,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isLoremExpanded, setIsLoremExpanded] = useState(false);
+  const [isServicesExpanded, setIsServicesExpanded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +30,7 @@ export default function Header() {
     } else {
       document.body.style.overflow = "";
       setIsLoremExpanded(prev => prev ? false : prev); // Reset accordion state on close only if it was expanded
+      setIsServicesExpanded(prev => prev ? false : prev);
     }
     return () => {
       document.body.style.overflow = "";
@@ -65,12 +67,33 @@ export default function Header() {
               >
                 About
               </Link>
-              <Link
-                href="#services"
-                className="text-sm font-semibold text-slate-700 hover:text-brand-purple dark:text-slate-300 dark:hover:text-brand-purple transition-colors"
-              >
-                Services
-              </Link>
+              {/* Services Dropdown Link */}
+              <div className="relative group/services cursor-pointer py-2">
+                <span className="flex items-center gap-1 text-sm font-semibold text-slate-700 hover:text-brand-purple dark:text-slate-300 dark:hover:text-brand-purple transition-colors">
+                  Services
+                  <ChevronDown className="w-4 h-4 transition-transform duration-200 group-hover/services:rotate-180" />
+                </span>
+                <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-100 dark:border-slate-700 py-2 opacity-0 invisible group-hover/services:opacity-100 group-hover/services:visible transition-all duration-200 z-50">
+                  <Link
+                    href="/it-operations-management"
+                    className="block px-4 py-2 text-sm text-slate-700 hover:bg-brand-purple/10 hover:text-brand-purple dark:text-slate-300 dark:hover:bg-slate-700 transition-colors"
+                  >
+                    IT Operations Management
+                  </Link>
+                  <Link
+                    href="/hr-service-delivery"
+                    className="block px-4 py-2 text-sm text-slate-700 hover:bg-brand-purple/10 hover:text-brand-purple dark:text-slate-300 dark:hover:bg-slate-700 transition-colors"
+                  >
+                    HR Service Delivery
+                  </Link>
+                  <Link
+                    href="/strategic-portfolio-management"
+                    className="block px-4 py-2 text-sm text-slate-700 hover:bg-brand-purple/10 hover:text-brand-purple dark:text-slate-300 dark:hover:bg-slate-700 transition-colors"
+                  >
+                    Strategic Portfolio Management
+                  </Link>
+                </div>
+              </div>
               <Link
                 href="#industries"
                 className="text-sm font-semibold text-slate-700 hover:text-brand-purple dark:text-slate-300 dark:hover:text-brand-purple transition-colors"
@@ -176,13 +199,57 @@ export default function Header() {
             >
               About
             </Link>
-            <Link
-              href="#services"
-              onClick={() => setIsOpen(false)}
-              className="text-xl font-semibold text-slate-800 dark:text-slate-200 hover:text-brand-purple transition-colors py-1"
-            >
-              Services
-            </Link>
+            {/* Mobile Services Dropdown Submenu Accordion */}
+            <div className="flex flex-col">
+              <button
+                onClick={() => setIsServicesExpanded(!isServicesExpanded)}
+                className="flex items-center justify-between text-xl font-semibold text-slate-800 dark:text-slate-200 hover:text-brand-purple transition-colors py-1 text-left w-full cursor-pointer"
+              >
+                <span>Services</span>
+                <ChevronDown
+                  className={`w-5 h-5 text-slate-500 dark:text-slate-400 transition-transform duration-300 ${isServicesExpanded ? "rotate-180" : ""
+                    }`}
+                />
+              </button>
+
+              <div
+                className={`overflow-hidden transition-all duration-300 ${isServicesExpanded ? "max-h-48 opacity-100 mt-3" : "max-h-0 opacity-0 pointer-events-none"
+                  }`}
+              >
+                <div className="flex flex-col gap-4 pl-4 border-l-2 border-slate-100 dark:border-slate-800 py-1">
+                  <Link
+                    href="/it-operations-management"
+                    onClick={() => {
+                      setIsOpen(false);
+                      setIsServicesExpanded(false);
+                    }}
+                    className="text-base font-medium text-slate-600 hover:text-brand-purple dark:text-slate-400 dark:hover:text-brand-purple transition-colors"
+                  >
+                    IT Operations Management
+                  </Link>
+                  <Link
+                    href="/hr-service-delivery"
+                    onClick={() => {
+                      setIsOpen(false);
+                      setIsServicesExpanded(false);
+                    }}
+                    className="text-base font-medium text-slate-600 hover:text-brand-purple dark:text-slate-400 dark:hover:text-brand-purple transition-colors"
+                  >
+                    HR Service Delivery
+                  </Link>
+                  <Link
+                    href="/strategic-portfolio-management"
+                    onClick={() => {
+                      setIsOpen(false);
+                      setIsServicesExpanded(false);
+                    }}
+                    className="text-base font-medium text-slate-600 hover:text-brand-purple dark:text-slate-400 dark:hover:text-brand-purple transition-colors"
+                  >
+                    Strategic Portfolio Management
+                  </Link>
+                </div>
+              </div>
+            </div>
             <Link
               href="#industries"
               onClick={() => setIsOpen(false)}

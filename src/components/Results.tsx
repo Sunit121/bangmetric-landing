@@ -13,6 +13,7 @@ interface ResultsProps {
   metrics?: ResultMetric[];
   highlightText?: React.ReactNode;
   metricTextClassName?: string;
+  highlightColSpan?: 2 | 3 | 4;
 }
 
 const defaultMetrics: ResultMetric[] = [
@@ -64,17 +65,18 @@ export default function Results({
   metrics = defaultMetrics,
   highlightText,
   metricTextClassName = "",
+  highlightColSpan = 2,
 }: ResultsProps) {
   return (
     <section id="results" className="pt-20 bg-white overflow-hidden">
-      <div className="max-w-[1536px] mx-auto px-3 md:px-4 relative z-20">
+      <div className="max-w-[1750px] mx-auto px-3 md:px-4 relative z-20">
 
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <MotionReveal as="h2" className="text-3xl sm:text-4xl md:text-[44px] font-medium text-slate-900 tracking-tight leading-tight">
             {sectionTitle}
           </MotionReveal>
-          <MotionReveal as="p" className="mt-4 text-lg md:text-[22px] text-slate-900" delay={0.1}>
+          <MotionReveal as="p" className="mt-4 text-lg strategic-result text-slate-900" delay={0.1}>
             {subtitle}
           </MotionReveal>
         </div>
@@ -96,14 +98,14 @@ export default function Results({
                 />
               </div>
 
-              <MotionReveal as="p" className={`results-metric-text font-medium text-black group-hover:text-white leading-snug ${metricTextClassName}`} delay={index * 0.08}>
+              <MotionReveal as="p" className={`results-metric-text strategic-result text-md text-black group-hover:text-white leading-snug ${metricTextClassName}`} delay={index * 0.08}>
                 {item.title}
               </MotionReveal>
             </div>
           ))}
           {highlightText && (
-            <div className="col-span-2 lg:col-span-2 flex items-center p-4 sm:p-6 lg:p-8 lg:pl-10">
-              <h3 className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-[#45cc29] leading-snug">
+            <div className={`col-span-2 ${highlightColSpan === 3 ? 'lg:col-span-3' : highlightColSpan === 4 ? 'lg:col-span-4' : 'lg:col-span-2'} flex items-center justify-center p-4 sm:p-6 lg:p-8 lg:pl-10`}>
+              <h3 className="text-[20px] sm:text-[24px] lg:text-[36px] font-bold text-green leading-snug">
                 {highlightText}
               </h3>
             </div>

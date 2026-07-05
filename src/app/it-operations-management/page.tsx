@@ -185,7 +185,7 @@ export default function ITOperationsManagement() {
     <>
       <Header />
       <main className="flex-1 relative">
-        <Hero title="IT Operations Management" bannerImage="/images/it-operations-management-banner.png" />
+        <Hero title="IT Operations Management" />
         <Intro
           heading={itomIntroHeading}
           paragraphs={itomIntroParagraphs}

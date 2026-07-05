@@ -44,7 +44,7 @@ export default function BottomCTA({
           <div className="pt-2">
             <Link
               href={buttonHref}
-              className="inline-flex items-center justify-center px-8 py-2 text-sm sm:text-base font-medium rounded-[5px] bg-[#9562EB] text-white hover:bg-[#834be3] transition-all duration-300 active:scale-95 hover:shadow-lg hover:shadow-[#9562EB]/30"
+              className="inline-flex items-center justify-center px-10 py-2 text-sm sm:text-base font-medium rounded-[5px] bg-[#9562EB] text-white hover:bg-[#834be3] transition-all duration-300 active:scale-95 hover:shadow-lg hover:shadow-[#9562EB]/30"
             >
               {buttonText}
             </Link>

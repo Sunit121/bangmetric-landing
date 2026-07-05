@@ -31,7 +31,7 @@ export default function Intro({
   paragraphs = defaultParagraphs,
 }: IntroProps) {
   return (
-    <section id="intro" className="py-15 bg-slate-50 overflow-hidden">
+    <section id="intro" className="py-15 overflow-hidden">
       <div className="max-w-[1536px] mx-auto px-3 md:px-4 relative z-20">
         <div className="flex flex-col md:flex-row gap-12 items-start">
 
@@ -43,7 +43,7 @@ export default function Intro({
           </div>
 
           {/* Right Column: Paragraph Content */}
-          <div className="lg:col-span-6 space-y-6 text-slate-600 font-light w-full">
+          <div className="lg:col-span-6 space-y-6 font-dark w-full">
             {paragraphs.map((text, index) => (
               <MotionReveal
                 key={index}

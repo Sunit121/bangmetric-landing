@@ -39,7 +39,7 @@ export default function BangmetricWay({
   layout = "grid",
 }: BangmetricWayProps) {
   return (
-    <section id="methodology" className="py-24 bg-white overflow-hidden">
+    <section id="methodology" className="pt-30 pb-30 bg-white overflow-hidden">
       <div className="max-w-[1536px] mx-auto px-6 md:px-8 relative z-20">
 
         {/* Header */}
@@ -60,9 +60,9 @@ export default function BangmetricWay({
                 key={index}
                 delay={index * 0.1}
               >
-                <div className="bangmetric-way-card" style={{ display: "flex", flexDirection: "row", alignItems: "center", background: "#f4f5f7", borderRadius: "16px", padding: "16px 24px", border: "1px solid #e5e7eb" }}>
+                <div className="bangmetric-way-card" style={{ display: "flex", flexDirection: "row", alignItems: "center", background: "#F6F5FA", borderRadius: "16px", padding: "25px 25px", border: "1px solid #BEBEBE" }}>
                   {step.image && (
-                    <div style={{ width: "140px", height: "90px", borderRadius: "10px", overflow: "hidden", flexShrink: 0, marginRight: "24px", position: "relative" }}>
+                    <div style={{ width: "170px", height: "100px", borderRadius: "10px", overflow: "hidden", flexShrink: 0, marginRight: "24px", position: "relative" }}>
                       <Image src={step.image} alt={step.title} fill style={{ objectFit: "cover" }} />
                     </div>
                   )}

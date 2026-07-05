@@ -8,7 +8,7 @@ interface ThinkNode {
 
 export interface ThinkDifferentlyProps {
   nodes?: ThinkNode[];
-  variant?: "zigzag" | "horizontal";
+  variant?: "zigzag" | "horizontal" | "two-columns" | "three-columns";
 }
 
 const defaultNodes: ThinkNode[] = [
@@ -63,15 +63,23 @@ export default function ThinkDifferently({ nodes = defaultNodes, variant = "hori
   );
 
   return (
-    <section id="services" className="py-75 bg-white overflow-hidden">
+    <section id="services" className="pt-15 pb-30 bg-white overflow-hidden">
       <style dangerouslySetInnerHTML={{
         __html: `
-        @keyframes verticalLineGlow {
+        @keyframes fiberSpark {
           0% {
-            background-position: 0 0;
+            transform: translateY(-100%);
+            opacity: 0;
+          }
+          10% {
+            opacity: 1;
+          }
+          80% {
+            opacity: 1;
           }
           100% {
-            background-position: 0 -200%;
+            transform: translateY(400%);
+            opacity: 0;
           }
         }
       `}} />
@@ -85,135 +93,188 @@ export default function ThinkDifferently({ nodes = defaultNodes, variant = "hori
           </MotionReveal>
         </div>
 
-        {/* Desktop zigzag / horizontal layout */}
-        <div className="hidden lg:block relative" style={{ height: 400 }}>
-          {variant === "zigzag" ? (
-            <svg
-              className="absolute pointer-events-none"
-              style={{ top: 0, left: 0, width: "100%", height: "100%" }}
-              preserveAspectRatio="none"
-              viewBox="0 0 1100 480"
-              fill="none"
-            >
-              <defs>
-                <filter id="lineGlow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="6" result="blur" />
-                  <feMerge>
-                    <feMergeNode in="blur" />
-                    <feMergeNode in="SourceGraphic" />
-                  </feMerge>
-                </filter>
-                <linearGradient id="zigzagGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#d7ccfe" />
-                  <stop offset="25%" stopColor="#8B6EF3" />
-                  <stop offset="50%" stopColor="#d7ccfe" />
-                  <stop offset="75%" stopColor="#8B6EF3" />
-                  <stop offset="100%" stopColor="#d7ccfe" />
-                </linearGradient>
-              </defs>
+        {/* Desktop zigzag / horizontal / two-columns / three-columns layout */}
+        {variant === "two-columns" || variant === "three-columns" ? (
+          <div className={`hidden lg:grid ${variant === "two-columns" ? "grid-cols-2 gap-20 max-w-5xl" : "grid-cols-3 gap-12 max-w-7xl"} mt-12 mx-auto`}>
+            {Array.from({ length: variant === "two-columns" ? 2 : 3 }).map((_, colIdx) => {
+              // For 5 nodes in 2 cols: Col 0 gets 3, Col 1 gets 2.
+              // For 6 nodes in 3 cols: Col 0, 1, 2 get 2.
+              const isTwoCol = variant === "two-columns";
+              const startIndex = isTwoCol ? (colIdx === 0 ? 0 : 3) : colIdx * 2;
+              const endIndex = isTwoCol ? (colIdx === 0 ? 3 : 5) : (colIdx * 2) + 2;
+              const colNodes = nodes.slice(startIndex, endIndex);
 
-              <path
-                d="M 88 168 L 308 318 L 528 168 L 748 318 L 968 168"
-                stroke="url(#zigzagGradient)"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                fill="none"
-              />
+              if (colNodes.length === 0) return null;
 
-              <path
-                d="M 88 168 L 308 318 L 528 168 L 748 318 L 968 168"
-                stroke="#8B6EF3"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                fill="none"
-                strokeDasharray="120 1640"
-                filter="url(#lineGlow)"
-              >
-                <animate
-                  attributeName="stroke-dashoffset"
-                  values="0;-1760"
-                  dur="4s"
-                  repeatCount="indefinite"
-                  calcMode="linear"
-                />
-              </path>
-            </svg>
-
-          ) : (
-            <svg
-              className="absolute pointer-events-none"
-              style={{ top: 0, left: 0, width: "100%", height: "100%" }}
-              preserveAspectRatio="none"
-              viewBox="0 0 1100 400"
-              fill="none"
-            >
-              <defs>
-                <linearGradient id="paint0_linear_2556_899" x1="0" y1="0" x2="1100" y2="0" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#9562EB" />
-                  <stop offset="1" stopColor="#D8CDFF" />
-                </linearGradient>
-                <linearGradient id="verticalStemGradient" x1="0" y1="144" x2="0" y2="260" gradientUnits="userSpaceOnUse">
-                  <stop offset="0%" stopColor="#9562EB" />
-                  <stop offset="215.21%" stopColor="#D8CDFF" />
-                </linearGradient>
-              </defs>
-              {/* Horizontal line at y=200 */}
-              <line x1="0" y1="200" x2="1100" y2="200" stroke="url(#paint0_linear_2556_899)" strokeWidth="3" vectorEffect="non-scaling-stroke" strokeLinecap="round" />
-
-              {/* Top stems: from bottom of dot (y=144) to y=215 (below line), at x=110,550,990 */}
-              <line x1="110" y1="144" x2="110" y2="235" stroke="url(#verticalStemGradient)" strokeWidth="3" strokeLinecap="butt" vectorEffect="non-scaling-stroke" />
-              <line x1="550" y1="144" x2="550" y2="235" stroke="url(#verticalStemGradient)" strokeWidth="3" strokeLinecap="butt" vectorEffect="non-scaling-stroke" />
-              <line x1="990" y1="144" x2="990" y2="235" stroke="url(#verticalStemGradient)" strokeWidth="3" strokeLinecap="butt" vectorEffect="non-scaling-stroke" />
-
-              {/* Bottom stems: from y=185 (above line) to top of dot (y=258), at x=330,770 */}
-              <line x1="330" y1="165" x2="330" y2="260" stroke="url(#verticalStemGradient)" strokeWidth="3" strokeLinecap="butt" vectorEffect="non-scaling-stroke" />
-              <line x1="770" y1="165" x2="770" y2="260" stroke="url(#verticalStemGradient)" strokeWidth="3" strokeLinecap="butt" vectorEffect="non-scaling-stroke" />
-            </svg>
-          )}
-
-          {nodes.slice(0, 5).map((node, idx) => {
-            const pos = variant === "zigzag" ? desktopPositions[idx] : horizontalPositions[idx];
-            if (!pos) return null;
-            return (
-              <React.Fragment key={idx}>
-                {/* Label */}
-                <div className="absolute" style={{ left: pos.labelLeft, top: pos.labelTop, width: pos.labelWidth }}>
-                  <MotionReveal as="p" className="node-text font-bold text-black leading-snug">
-                    {node.bold}
-                  </MotionReveal>
-                  {node.detail && (
-                    <MotionReveal as="p" className="node-text text-black leading-snug" delay={0.05}>
-                      {node.detail}
-                    </MotionReveal>
+              return (
+                <div key={colIdx} className={`relative pl-10 space-y-16 ${colIdx === 1 && isTwoCol ? "h-60" : "h-fit"}`}>
+                  {colNodes.length > 1 && (
+                    <div
+                      className={`absolute left-[19px] top-[14px] ${isTwoCol && colIdx === 1 ? "bottom-[5px]" : "bottom-[30px]"} w-[4px] rounded-full overflow-hidden`}
+                      style={{ background: "linear-gradient(180deg, #9562EB 0%, #D8CDFF 115.85%)" }}
+                    >
+                      <div
+                        className="w-full h-[30%] absolute top-0 left-0"
+                        style={{
+                          background: "linear-gradient(to bottom, transparent, #9562EB 60%, #FFFFFF 100%)",
+                          animation: "fiberSpark 2.5s ease-in-out infinite"
+                        }}
+                      />
+                    </div>
                   )}
+                  {colNodes.map((node, idx) => (
+                    <div key={idx} className="relative flex items-start">
+                      <div className="absolute -left-[33.5px] mt-1 z-10">
+                        <CircleDot size={24} />
+                      </div>
+                      <div className="pl-3">
+                        <MotionReveal as="p" className="node-text font-bold text-black leading-snug">
+                          {node.bold}
+                        </MotionReveal>
+                        {node.detail && (
+                          <MotionReveal as="p" className="node-text text-black leading-snug mt-1" delay={0.05}>
+                            {node.detail}
+                          </MotionReveal>
+                        )}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                {/* Dot */}
-                <div className="absolute" style={{ left: pos.dotLeft, top: pos.dotTop }}>
-                  <CircleDot size={24} />
-                </div>
-              </React.Fragment>
-            );
-          })}
-        </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="hidden lg:block relative" style={{ height: 400 }}>
+            {variant === "zigzag" ? (
+              <svg
+                className="absolute pointer-events-none"
+                style={{ top: 0, left: 0, width: "100%", height: "100%" }}
+                preserveAspectRatio="none"
+                viewBox="0 0 1100 480"
+                fill="none"
+              >
+                <defs>
+                  <filter id="lineGlow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="6" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
+                  <linearGradient id="zigzagGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#d7ccfe" />
+                    <stop offset="25%" stopColor="#8B6EF3" />
+                    <stop offset="50%" stopColor="#d7ccfe" />
+                    <stop offset="75%" stopColor="#8B6EF3" />
+                    <stop offset="100%" stopColor="#d7ccfe" />
+                  </linearGradient>
+                </defs>
+
+                <path
+                  d="M 88 168 L 308 318 L 528 168 L 748 318 L 968 168"
+                  stroke="url(#zigzagGradient)"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  fill="none"
+                />
+
+                <path
+                  d="M 88 168 L 308 318 L 528 168 L 748 318 L 968 168"
+                  stroke="#8B6EF3"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  fill="none"
+                  strokeDasharray="120 1640"
+                  filter="url(#lineGlow)"
+                >
+                  <animate
+                    attributeName="stroke-dashoffset"
+                    values="0;-1760"
+                    dur="4s"
+                    repeatCount="indefinite"
+                    calcMode="linear"
+                  />
+                </path>
+              </svg>
+
+            ) : (
+              <svg
+                className="absolute pointer-events-none"
+                style={{ top: 0, left: 0, width: "100%", height: "100%" }}
+                preserveAspectRatio="none"
+                viewBox="0 0 1100 400"
+                fill="none"
+              >
+                <defs>
+                  <linearGradient id="paint0_linear_2556_899" x1="0" y1="0" x2="1100" y2="0" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#9562EB" />
+                    <stop offset="1" stopColor="#D8CDFF" />
+                  </linearGradient>
+                  <linearGradient id="verticalStemGradient" x1="0" y1="144" x2="0" y2="260" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stopColor="#9562EB" />
+                    <stop offset="215.21%" stopColor="#D8CDFF" />
+                  </linearGradient>
+                </defs>
+                {/* Horizontal line at y=200 */}
+                <line x1="0" y1="200" x2="1100" y2="200" stroke="url(#paint0_linear_2556_899)" strokeWidth="3" vectorEffect="non-scaling-stroke" strokeLinecap="round" />
+
+                {/* Top stems: from bottom of dot (y=144) to y=215 (below line), at x=110,550,990 */}
+                <line x1="110" y1="144" x2="110" y2="235" stroke="url(#verticalStemGradient)" strokeWidth="3" strokeLinecap="butt" vectorEffect="non-scaling-stroke" />
+                <line x1="550" y1="144" x2="550" y2="235" stroke="url(#verticalStemGradient)" strokeWidth="3" strokeLinecap="butt" vectorEffect="non-scaling-stroke" />
+                <line x1="990" y1="144" x2="990" y2="235" stroke="url(#verticalStemGradient)" strokeWidth="3" strokeLinecap="butt" vectorEffect="non-scaling-stroke" />
+
+                {/* Bottom stems: from y=185 (above line) to top of dot (y=258), at x=330,770 */}
+                <line x1="330" y1="165" x2="330" y2="260" stroke="url(#verticalStemGradient)" strokeWidth="3" strokeLinecap="butt" vectorEffect="non-scaling-stroke" />
+                <line x1="770" y1="165" x2="770" y2="260" stroke="url(#verticalStemGradient)" strokeWidth="3" strokeLinecap="butt" vectorEffect="non-scaling-stroke" />
+              </svg>
+            )}
+
+            {nodes.slice(0, 5).map((node, idx) => {
+              const pos = variant === "zigzag" ? desktopPositions[idx] : horizontalPositions[idx];
+              if (!pos) return null;
+              return (
+                <React.Fragment key={idx}>
+                  {/* Label */}
+                  <div className="absolute" style={{ left: pos.labelLeft, top: pos.labelTop, width: pos.labelWidth }}>
+                    <MotionReveal as="p" className="node-text font-bold text-black leading-snug">
+                      {node.bold}
+                    </MotionReveal>
+                    {node.detail && (
+                      <MotionReveal as="p" className="node-text text-black leading-snug" delay={0.05}>
+                        {node.detail}
+                      </MotionReveal>
+                    )}
+                  </div>
+                  {/* Dot */}
+                  <div className="absolute" style={{ left: pos.dotLeft, top: pos.dotTop }}>
+                    <CircleDot size={24} />
+                  </div>
+                </React.Fragment>
+              );
+            })}
+          </div>
+        )}
 
         {/* Mobile vertical layout */}
         <div className="lg:hidden mt-8 relative pl-8 space-y-12">
-          <div className="absolute left-[15px] top-[14px] bottom-[-30px] w-[2px] bg-[#D8CDFF] rounded-full overflow-hidden">
+          <div
+            className="absolute left-[15px] top-[14px] bottom-[-30px] w-[3px] rounded-full overflow-hidden"
+            style={{ background: "linear-gradient(180deg, #9562EB 0%, #D8CDFF 115.85%)" }}
+          >
             <div
-              className="w-full h-full"
+              className="w-full h-[30%] absolute top-0 left-0"
               style={{
-                background: "linear-gradient(to bottom, transparent, #8B6EF3, transparent)",
-                backgroundSize: "100% 200%",
-                animation: "verticalLineGlow 3s linear infinite"
+                background: "linear-gradient(to bottom, transparent, #9562EB 60%, #FFFFFF 100%)",
+                animation: "fiberSpark 2.5s ease-in-out infinite"
               }}
             />
           </div>
 
           {nodes.map((node, idx) => (
             <div key={idx} className="relative flex items-start">
-              <div className="absolute -left-[30px] sm:-left-[26px] mt-1 z-10">
+              <div className="absolute -left-[30.5px] mt-1 z-10">
                 <CircleDot size={20} />
               </div>
               <div className="pl-3">
