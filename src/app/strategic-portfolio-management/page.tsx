@@ -18,7 +18,7 @@ import ScrollCube from "@/components/ScrollCube";
 const spmIntroHeading = (
   <>
     Designed from the <br className="hidden md:inline" />
-    strategy side. <br />
+    business back.<br />
     <span className="inline-block mt-2 text-slate-900">
       Built on{" "}
       <span className="text-brand-green relative inline-block">

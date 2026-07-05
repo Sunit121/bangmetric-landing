@@ -9,7 +9,7 @@
   --color-brand-purple-light: #856CE3;
   --color-brand-purple-bg: #F5F3FF;
 
-  --color-brand-green: #81B824;
+  --color-brand-green: #4FCA07;
   --color-brand-green-light: #9CD63D;
   --color-brand-green-dark: #5F8A15;
 
@@ -129,6 +129,11 @@ h6 {
 .w-full {
   width: 100%;
 }
+
+.text-brand-green {
+  color: var(--color-brand-green);
+}
+
 
 /* Jumpstart card hover effect */
 .jumpstart-card {
@@ -309,9 +314,12 @@ h6 {
 }
 
 @keyframes cubePureFloat {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-12px);
   }
