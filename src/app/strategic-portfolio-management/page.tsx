@@ -21,7 +21,7 @@ const spmIntroHeading = (
     business back.<br />
     <span className="inline-block mt-2 text-slate-900">
       Built on{" "}
-      <span className="text-brand-green relative inline-block">
+      <span className="text-green relative inline-block">
         ServiceNow
       </span>
     </span>
