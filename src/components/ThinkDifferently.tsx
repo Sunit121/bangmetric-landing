@@ -1,33 +1,69 @@
 import React from "react";
 import MotionReveal from "@/components/MotionReveal";
 
-export default function ThinkDifferently() {
+interface ThinkNode {
+  bold: string;
+  detail?: string;
+}
+
+export interface ThinkDifferentlyProps {
+  nodes?: ThinkNode[];
+  variant?: "zigzag" | "horizontal";
+}
+
+const defaultNodes: ThinkNode[] = [
+  { bold: "Value streams", detail: "over ticket queues" },
+  { bold: "Rightsized, right now", detail: "(what you need today, expandable tomorrow)" },
+  { bold: "Flow metrics over vanity metrics", detail: "(MTTD/MTTR, FCR, change failure rate, employee effort)" },
+  { bold: "AI with intent", detail: "(triage, insight, knowledge, change risk)" },
+  { bold: "Resolution over SLA theatre" },
+];
+
+// Desktop zigzag node positions (5 nodes)
+const desktopPositions = [
+  { labelLeft: "2%", labelTop: 95, labelWidth: 200, dotLeft: "calc(8% - 15px)", dotTop: 156, isTop: true },
+  { labelLeft: "20%", labelTop: 335, labelWidth: 250, dotLeft: "calc(28% - 15px)", dotTop: 306, isTop: false },
+  { labelLeft: "38%", labelTop: 55, labelWidth: 280, dotLeft: "calc(48% - 15px)", dotTop: 156, isTop: true },
+  { labelLeft: "62%", labelTop: 350, labelWidth: 200, dotLeft: "calc(68% - 15px)", dotTop: 306, isTop: false },
+  { labelLeft: "84%", labelTop: 100, labelWidth: 180, dotLeft: "calc(88% - 15px)", dotTop: 156, isTop: true },
+];
+
+// Horizontal timeline (5 nodes: dot-above/label-below, dot-below/label-above, alternating)
+// Container height: 400px, line at CSS y=200
+// Top dots (above line): dotTop=120, center=132, dotBottom=144, stem=144→200 (56px), label below at y=283
+// Bottom dots (below line): dotTop=258, center=270, dotBottom=282, stem=200→258 (58px), label above at y=40
+const horizontalPositions = [
+  { labelLeft: "0%", labelTop: 250, labelWidth: "17%", dotLeft: "calc(10% - 15px)", dotTop: 120 },
+  { labelLeft: "21%", labelTop: 25, labelWidth: "20%", dotLeft: "calc(30% - 15px)", dotTop: 258 },
+  { labelLeft: "41%", labelTop: 250, labelWidth: "20%", dotLeft: "calc(50% - 15px)", dotTop: 120 },
+  { labelLeft: "61%", labelTop: 30, labelWidth: "18%", dotLeft: "calc(70% - 15px)", dotTop: 258 },
+  { labelLeft: "81%", labelTop: 250, labelWidth: "18%", dotLeft: "calc(90% - 15px)", dotTop: 120 },
+];
+
+export default function ThinkDifferently({ nodes = defaultNodes, variant = "horizontal" }: ThinkDifferentlyProps) {
   const CircleDot = ({ size = 18 }: { size?: number }) => (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 140 140"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      style={{ display: "block" }}
-    >
+    <svg width="30" height="30" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <g filter="url(#filter0_i_2556_1042)">
+        <circle cx="17.5" cy="17.5" r="17.5" fill="#D8CDFF" />
+      </g>
       <defs>
-        <filter id="innerShadow" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur" />
-          <feOffset dx="0" dy="2" result="offsetBlur" />
-          <feComposite in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="innerShadow" />
-          <feFlood floodColor="#a78bfa" floodOpacity="0.35" result="color" />
-          <feComposite in="color" in2="innerShadow" operator="in" result="shadow" />
-          <feComposite in="shadow" in2="SourceGraphic" operator="over" />
+        <filter id="filter0_i_2556_1042" x="0" y="0" width="40" height="37" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
+          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+          <feOffset dx="3" dy="2" />
+          <feGaussianBlur stdDeviation="1.75" />
+          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+          <feColorMatrix type="matrix" values="0 0 0 0 0.670588 0 0 0 0 0.603922 0 0 0 0 0.909804 0 0 0 1 0" />
+          <feBlend mode="normal" in2="shape" result="effect1_innerShadow_2556_1042" />
         </filter>
       </defs>
-      <circle cx="70" cy="70" r="70" fill="#D8CDFF" filter="url(#innerShadow)" />
     </svg>
+
   );
 
-
   return (
-    <section id="services" className="py-24 bg-white overflow-hidden">
+    <section id="services" className="py-75 bg-white overflow-hidden">
       <style dangerouslySetInnerHTML={{
         __html: `
         @keyframes verticalLineGlow {
@@ -39,7 +75,7 @@ export default function ThinkDifferently() {
           }
         }
       `}} />
-      <div className="max-w-[1100px] mx-auto px-3 md:px-4 relative z-20">
+      <div className="max-w-[1536px] mx-auto px-3 md:px-4 relative z-20">
         <div className="text-center mb-16 md:mb-20">
           <MotionReveal
             as="h2"
@@ -49,127 +85,121 @@ export default function ThinkDifferently() {
           </MotionReveal>
         </div>
 
-        <div className="hidden lg:block relative" style={{ height: 480 }}>
-          <svg
-            className="absolute pointer-events-none"
-            style={{ top: 0, left: 0, width: "100%", height: "100%" }}
-            preserveAspectRatio="none"
-            viewBox="0 0 1100 480"
-            fill="none"
-          >
-            <defs>
-              <filter id="lineGlow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="6" result="blur" />
-                <feMerge>
-                  <feMergeNode in="blur" />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-              <linearGradient id="zigzagGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="#d7ccfe" />
-                <stop offset="25%" stopColor="#8B6EF3" />
-                <stop offset="50%" stopColor="#d7ccfe" />
-                <stop offset="75%" stopColor="#8B6EF3" />
-                <stop offset="100%" stopColor="#d7ccfe" />
-              </linearGradient>
-            </defs>
-
-            <path
-              d="M 88 168 L 308 318 L 528 168 L 748 318 L 968 168"
-              stroke="url(#zigzagGradient)"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+        {/* Desktop zigzag / horizontal layout */}
+        <div className="hidden lg:block relative" style={{ height: 400 }}>
+          {variant === "zigzag" ? (
+            <svg
+              className="absolute pointer-events-none"
+              style={{ top: 0, left: 0, width: "100%", height: "100%" }}
+              preserveAspectRatio="none"
+              viewBox="0 0 1100 480"
               fill="none"
-            />
-
-            <path
-              d="M 88 168 L 308 318 L 528 168 L 748 318 L 968 168"
-              stroke="#8B6EF3"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              fill="none"
-              strokeDasharray="120 1640"
-              filter="url(#lineGlow)"
             >
-              <animate
-                attributeName="stroke-dashoffset"
-                values="0;-1760"
-                dur="4s"
-                repeatCount="indefinite"
-                calcMode="linear"
+              <defs>
+                <filter id="lineGlow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="6" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+                <linearGradient id="zigzagGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#d7ccfe" />
+                  <stop offset="25%" stopColor="#8B6EF3" />
+                  <stop offset="50%" stopColor="#d7ccfe" />
+                  <stop offset="75%" stopColor="#8B6EF3" />
+                  <stop offset="100%" stopColor="#d7ccfe" />
+                </linearGradient>
+              </defs>
+
+              <path
+                d="M 88 168 L 308 318 L 528 168 L 748 318 L 968 168"
+                stroke="url(#zigzagGradient)"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
               />
-            </path>
-          </svg>
 
-          <div className="absolute" style={{ left: "2%", top: 95, width: 180 }}>
-            <MotionReveal as="p" className="node-text font-bold text-black leading-snug">Value streams</MotionReveal>
-            <MotionReveal as="p" className="node-text text-black leading-snug" delay={0.05}>over ticket queues</MotionReveal>
-          </div>
-          <div className="absolute" style={{ left: "calc(8% - 9px)", top: 156 }}>
-            <CircleDot size={24} />
-          </div>
+              <path
+                d="M 88 168 L 308 318 L 528 168 L 748 318 L 968 168"
+                stroke="#8B6EF3"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                fill="none"
+                strokeDasharray="120 1640"
+                filter="url(#lineGlow)"
+              >
+                <animate
+                  attributeName="stroke-dashoffset"
+                  values="0;-1760"
+                  dur="4s"
+                  repeatCount="indefinite"
+                  calcMode="linear"
+                />
+              </path>
+            </svg>
 
-          <div className="absolute" style={{ left: "calc(28% - 9px)", top: 306 }}>
-            <CircleDot size={24} />
-          </div>
-          <div className="absolute" style={{ left: "20%", top: 345, width: 230 }}>
-            <div className="node-text leading-snug">
-              <MotionReveal as="p" className="font-bold text-black inline-block">
-                Rightsized, right
-              </MotionReveal>
-            </div>
-            <div className="node-text leading-snug mt-0.5">
-              <MotionReveal as="p" className="font-bold text-black inline-block">
-                now
-              </MotionReveal>
-              {" "}
-              <span className="text-black">(what you need today,</span>
-            </div>
-            <MotionReveal as="p" className="node-text text-black leading-snug" delay={0.05}>expandable tomorrow)</MotionReveal>
-          </div>
+          ) : (
+            <svg
+              className="absolute pointer-events-none"
+              style={{ top: 0, left: 0, width: "100%", height: "100%" }}
+              preserveAspectRatio="none"
+              viewBox="0 0 1100 400"
+              fill="none"
+            >
+              <defs>
+                <linearGradient id="paint0_linear_2556_899" x1="0" y1="0" x2="1100" y2="0" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#9562EB" />
+                  <stop offset="1" stopColor="#D8CDFF" />
+                </linearGradient>
+                <linearGradient id="verticalStemGradient" x1="0" y1="144" x2="0" y2="260" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stopColor="#9562EB" />
+                  <stop offset="215.21%" stopColor="#D8CDFF" />
+                </linearGradient>
+              </defs>
+              {/* Horizontal line at y=200 */}
+              <line x1="0" y1="200" x2="1100" y2="200" stroke="url(#paint0_linear_2556_899)" strokeWidth="3" vectorEffect="non-scaling-stroke" strokeLinecap="round" />
 
-          <div className="absolute" style={{ left: "38%", top: 55, width: 280 }}>
-            <div className="node-text leading-snug">
-              <MotionReveal as="p" className="font-bold text-black">Flow metrics over vanity</MotionReveal>
-            </div>
-            <div className="node-text leading-snug">
-              <MotionReveal as="p" className="font-bold text-black">
-                metrics <span className="font-normal text-black">(MTTD/MTTR, FCR,</span>
-              </MotionReveal>
-            </div>
-            <MotionReveal as="p" className="node-text text-black leading-snug" delay={0.05}>change failure rate, employee</MotionReveal>
-            <MotionReveal as="p" className="node-text text-black leading-snug" delay={0.1}>effort)</MotionReveal>
-          </div>
-          <div className="absolute" style={{ left: "calc(48% - 9px)", top: 156 }}>
-            <CircleDot size={24} />
-          </div>
+              {/* Top stems: from bottom of dot (y=144) to y=215 (below line), at x=110,550,990 */}
+              <line x1="110" y1="144" x2="110" y2="235" stroke="url(#verticalStemGradient)" strokeWidth="3" strokeLinecap="butt" vectorEffect="non-scaling-stroke" />
+              <line x1="550" y1="144" x2="550" y2="235" stroke="url(#verticalStemGradient)" strokeWidth="3" strokeLinecap="butt" vectorEffect="non-scaling-stroke" />
+              <line x1="990" y1="144" x2="990" y2="235" stroke="url(#verticalStemGradient)" strokeWidth="3" strokeLinecap="butt" vectorEffect="non-scaling-stroke" />
 
-          <div className="absolute" style={{ left: "calc(68% - 9px)", top: 306 }}>
-            <CircleDot size={24} />
-          </div>
-          <div className="absolute" style={{ left: "62%", top: 350, width: 200 }}>
-            <div className="node-text leading-snug">
-              <MotionReveal as="p" className="font-bold text-black inline-block">AI with intent </MotionReveal>
-              <span className="text-black ml-1">(triage,</span>
-            </div>
-            <MotionReveal as="p" className="node-text text-black leading-snug" delay={0.05}>insight, knowledge,</MotionReveal>
-            <MotionReveal as="p" className="node-text text-black leading-snug" delay={0.1}>change risk)</MotionReveal>
-          </div>
+              {/* Bottom stems: from y=185 (above line) to top of dot (y=258), at x=330,770 */}
+              <line x1="330" y1="165" x2="330" y2="260" stroke="url(#verticalStemGradient)" strokeWidth="3" strokeLinecap="butt" vectorEffect="non-scaling-stroke" />
+              <line x1="770" y1="165" x2="770" y2="260" stroke="url(#verticalStemGradient)" strokeWidth="3" strokeLinecap="butt" vectorEffect="non-scaling-stroke" />
+            </svg>
+          )}
 
-          <div className="absolute" style={{ left: "84%", top: 100, width: 180 }}>
-            <MotionReveal as="p" className="node-text font-bold text-black leading-snug">Resolution over</MotionReveal>
-            <MotionReveal as="p" className="node-text font-bold text-black leading-snug" delay={0.05}>SLA theatre</MotionReveal>
-          </div>
-          <div className="absolute" style={{ left: "calc(88% - 9px)", top: 156 }}>
-            <CircleDot size={24} />
-          </div>
-
+          {nodes.slice(0, 5).map((node, idx) => {
+            const pos = variant === "zigzag" ? desktopPositions[idx] : horizontalPositions[idx];
+            if (!pos) return null;
+            return (
+              <React.Fragment key={idx}>
+                {/* Label */}
+                <div className="absolute" style={{ left: pos.labelLeft, top: pos.labelTop, width: pos.labelWidth }}>
+                  <MotionReveal as="p" className="node-text font-bold text-black leading-snug">
+                    {node.bold}
+                  </MotionReveal>
+                  {node.detail && (
+                    <MotionReveal as="p" className="node-text text-black leading-snug" delay={0.05}>
+                      {node.detail}
+                    </MotionReveal>
+                  )}
+                </div>
+                {/* Dot */}
+                <div className="absolute" style={{ left: pos.dotLeft, top: pos.dotTop }}>
+                  <CircleDot size={24} />
+                </div>
+              </React.Fragment>
+            );
+          })}
         </div>
 
+        {/* Mobile vertical layout */}
         <div className="lg:hidden mt-8 relative pl-8 space-y-12">
-
           <div className="absolute left-[15px] top-[14px] bottom-[-30px] w-[2px] bg-[#D8CDFF] rounded-full overflow-hidden">
             <div
               className="w-full h-full"
@@ -181,66 +211,24 @@ export default function ThinkDifferently() {
             />
           </div>
 
-          <div className="relative flex items-start">
-            <div className="absolute -left-[26px] mt-1 z-10">
-              <CircleDot size={20} />
+          {nodes.map((node, idx) => (
+            <div key={idx} className="relative flex items-start">
+              <div className="absolute -left-[30px] sm:-left-[26px] mt-1 z-10">
+                <CircleDot size={20} />
+              </div>
+              <div className="pl-3">
+                <MotionReveal as="p" className="text-base text-slate-800 dark:text-slate-200 leading-relaxed">
+                  <span className="font-bold text-slate-900 dark:text-white">{node.bold}</span>
+                  {node.detail && (
+                    <>
+                      {" "}
+                      <span className="text-slate-600 dark:text-slate-400">{node.detail}</span>
+                    </>
+                  )}
+                </MotionReveal>
+              </div>
             </div>
-            <div className="pl-3">
-              <MotionReveal as="p" className="text-base text-slate-800 dark:text-slate-200 leading-relaxed">
-                <span className="font-bold text-slate-900 dark:text-white">Value streams</span>{" "}
-                <span className="text-slate-600 dark:text-slate-400">over ticket queues</span>
-              </MotionReveal>
-            </div>
-          </div>
-
-          <div className="relative flex items-start">
-            <div className="absolute -left-[26px] mt-1 z-10">
-              <CircleDot size={20} />
-            </div>
-            <div className="pl-3">
-              <MotionReveal as="p" className="text-base text-slate-800 dark:text-slate-200 leading-relaxed">
-                <span className="font-bold text-slate-900 dark:text-white highlight-blue inline px-1 py-0.5 rounded">
-                  Rightsized, right now
-                </span>{" "}
-                <span className="text-slate-600 dark:text-slate-400">(what you need today, expandable tomorrow)</span>
-              </MotionReveal>
-            </div>
-          </div>
-
-          <div className="relative flex items-start">
-            <div className="absolute -left-[26px] mt-1 z-10">
-              <CircleDot size={20} />
-            </div>
-            <div className="pl-3">
-              <MotionReveal as="p" className="text-base text-slate-800 dark:text-slate-200 leading-relaxed">
-                <span className="font-bold text-slate-900 dark:text-white">Flow metrics over vanity metrics</span>{" "}
-                <span className="text-slate-600 dark:text-slate-400">(MTTD/MTTR, FCR, change failure rate, employee effort)</span>
-              </MotionReveal>
-            </div>
-          </div>
-
-          <div className="relative flex items-start">
-            <div className="absolute -left-[26px] mt-1 z-10">
-              <CircleDot size={20} />
-            </div>
-            <div className="pl-3">
-              <MotionReveal as="p" className="text-base text-slate-800 dark:text-slate-200 leading-relaxed">
-                <span className="font-bold text-slate-900 dark:text-white">AI with intent</span>{" "}
-                <span className="text-slate-600 dark:text-slate-400">(triage, insight, knowledge, change risk)</span>
-              </MotionReveal>
-            </div>
-          </div>
-
-          <div className="relative flex items-start">
-            <div className="absolute -left-[26px] mt-1 z-10">
-              <CircleDot size={20} />
-            </div>
-            <div className="pl-3">
-              <MotionReveal as="p" className="text-base text-slate-800 dark:text-slate-200 leading-relaxed">
-                <span className="font-bold text-slate-900 dark:text-white">Resolution over SLA theatre</span>
-              </MotionReveal>
-            </div>
-          </div>
+          ))}
         </div>
 
       </div>

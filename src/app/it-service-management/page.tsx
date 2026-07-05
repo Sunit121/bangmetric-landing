@@ -16,46 +16,20 @@ import ScrollCube from "@/components/ScrollCube";
 export default function Home() {
   return (
     <>
-      {/* Navigation Header */}
       <Header />
-
-      {/* Main Content Sections */}
       <main className="flex-1 relative">
-        {/* Scroll-Triggered Floating Cube */}
         <ScrollCube />
-
-        {/* Hero Banner Section */}
         <Hero />
-
-        {/* Intro Side-by-Side Section */}
         <Intro />
-
-        {/* ITSM Jumpstarts Program Cards */}
         <Jumpstarts />
-
-        {/* How BANGMETRIC Thinks Differently Timeline */}
         <ThinkDifferently />
-
-        {/* Dark ServiceNow Modules Listings */}
         <WhatWeBuild />
-
-        {/* Impact Results Cards */}
         <Results />
-
-        {/* Green Friction-Removal Callout */}
         <Callout />
-
-        {/* Bangmetric Way Methodology Grid */}
         <BangmetricWay />
-
-        {/* Why Organizations Choose Us Checklist */}
         <WhyChooseUs />
-
-        {/* Bottom CTA Pre-Footer Section */}
         <BottomCTA />
       </main>
-
-      {/* Footer & Form Section */}
       <Footer />
     </>
   );

@@ -9,9 +9,9 @@ export default function Footer() {
     <footer
       id="contact"
       className="bg-black overflow-hidden"
-      style={{ paddingTop: "64px", paddingBottom: "80px", paddingLeft: "20px", paddingRight: "20px" }}
+      style={{ paddingTop: "64px", paddingBottom: "150px", paddingLeft: "20px", paddingRight: "20px" }}
     >
-      <div className="max-w-[1100px] mx-auto px-3">
+      <div className="max-w-[1536px] mx-auto px-3">
 
         {/* ── ROW 1: Logo + Slogan ── */}
         <div style={{ marginBottom: "80px" }}>
@@ -122,7 +122,6 @@ export default function Footer() {
               <span>info.xyz@gmail.com</span>
             </div>
 
-            {/* Email input */}
             <input
               type="text"
               placeholder="Email:"
@@ -132,9 +131,9 @@ export default function Footer() {
                 maxWidth: "280px",
                 padding: "10px 16px",
                 background: "transparent",
-                border: "1px solid #4b5563",
+                border: "1px solid #fff",
                 borderRadius: "4px",
-                color: "#9ca3af",
+                color: "#fff",
                 fontSize: "13px",
                 outline: "none",
               }}

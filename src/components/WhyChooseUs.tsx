@@ -2,29 +2,46 @@ import React from "react";
 import Image from "next/image";
 import MotionReveal from "@/components/MotionReveal";
 
-export default function WhyChooseUs() {
-  const points = [
-    {
-      title: "Privately owned",
-      desc: "— real accountability, no investor pressure, no bloated teams",
-    },
-    {
-      title: "Midmarket specialists",
-      desc: "— world class capability without enterprise bloat",
-    },
-    {
-      title: "Out come obsessed",
-      desc: "— we move MTTR, FCR, and change quality, not just sliders on a dashboard",
-    },
-    {
-      title: "End toend",
-      desc: "— strategy, design, build, AI, optimisation\nWe own outcomes—not hours.",
-    },
-  ];
+interface WhyPoint {
+  title: string;
+  desc: string;
+}
 
+interface WhyChooseUsProps {
+  subtitle?: string;
+  rightHeading?: string;
+  points?: WhyPoint[];
+  cubeImage?: string;
+}
+
+const defaultPoints: WhyPoint[] = [
+  {
+    title: "Privately owned",
+    desc: "— real accountability, no investor pressure, no bloated teams",
+  },
+  {
+    title: "Midmarket specialists",
+    desc: "— world class capability without enterprise bloat",
+  },
+  {
+    title: "Out come obsessed",
+    desc: "— we move MTTR, FCR, and change quality, not just sliders on a dashboard",
+  },
+  {
+    title: "End toend",
+    desc: "— strategy, design, build, AI, optimisation\nWe own outcomes—not hours.",
+  },
+];
+
+export default function WhyChooseUs({
+  subtitle = "You\u0027re not looking for another implementer.",
+  rightHeading = "You\u2019re looking for a thinking partner.",
+  points = defaultPoints,
+  cubeImage = "/images/cube.png",
+}: WhyChooseUsProps) {
   return (
     <section id="why-choose-us" className="pt-24 pb-0 bg-[#F3F3F5] relative z-10 overflow-visible">
-      <div className="max-w-[1100px] mx-auto px-3 md:px-4 relative z-20">
+      <div className="max-w-[1536px] mx-auto px-3 md:px-4 relative z-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-12 lg:gap-y-0">
 
           {/* Heading (Always Top on Mobile, Top Left on Desktop) */}
@@ -34,14 +51,14 @@ export default function WhyChooseUs() {
               Choose BANGMETRIC
             </MotionReveal>
             <MotionReveal as="p" className="mt-4 text-lg text-slate-600 font-light max-w-xl" delay={0.1}>
-              You&apos;re not looking for another implementer.
+              {subtitle}
             </MotionReveal>
           </div>
 
           {/* List Points (Middle on Mobile, Right Column on Desktop spanning both rows) */}
           <div className="w-full lg:col-start-2 lg:row-start-1 lg:row-span-2 flex flex-col justify-center mb-12 lg:mb-20">
             <h3 className="text-xl sm:text-2xl font-bold text-black mb-8 leading-snug">
-              You’re looking for a thinking partner.
+              {rightHeading}
             </h3>
 
             <div className="relative pl-12 sm:pl-16 space-y-10">
@@ -69,7 +86,7 @@ export default function WhyChooseUs() {
           <div className="w-full lg:col-start-1 lg:row-start-2 flex justify-center lg:justify-start items-end mt-auto pb-0">
             <div id="cube-end-placeholder" className="w-full max-w-[280px] sm:max-w-[450px] aspect-square relative flex justify-center lg:justify-start items-end translate-y-1/2">
               <Image
-                src="/images/cube.png"
+                src={cubeImage}
                 alt="Why Choose Us Visual"
                 width={480}
                 height={480}

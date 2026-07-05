@@ -2,61 +2,80 @@ import React from "react";
 import Image from "next/image";
 import MotionReveal from "@/components/MotionReveal";
 
-export default function Results() {
-  const metrics = [
-    {
-      icon: "/images/icon-1.png",
-      title: (
-        <>
-          20&ndash;40%<br />faster MTTR
-        </>
-      ),
-    },
-    {
-      icon: "/images/icon-2.png",
-      title: (
-        <>
-          15&ndash;30%<br />higher first<br />contact resolution
-        </>
-      ),
-    },
-    {
-      icon: "/images/icon-3.png",
-      title: (
-        <>
-          25%+ analyst<br />productivity<br />improvement
-        </>
-      ),
-    },
-    {
-      icon: "/images/icon-4.png",
-      title: (
-        <>
-          Fewer emergency<br />changes &amp; lower<br />change failure rate
-        </>
-      ),
-    },
-    {
-      icon: "/images/icon-5.png",
-      title: (
-        <>
-          Reduced cost per-<br />ticket through clarity<br />and automation
-        </>
-      ),
-    },
-  ];
+interface ResultMetric {
+  icon: string;
+  title: React.ReactNode;
+}
 
+interface ResultsProps {
+  sectionTitle?: string;
+  subtitle?: string;
+  metrics?: ResultMetric[];
+  highlightText?: React.ReactNode;
+  metricTextClassName?: string;
+}
+
+const defaultMetrics: ResultMetric[] = [
+  {
+    icon: "/images/icon-1.png",
+    title: (
+      <>
+        20&ndash;40%<br />faster MTTR
+      </>
+    ),
+  },
+  {
+    icon: "/images/icon-2.png",
+    title: (
+      <>
+        15&ndash;30%<br />higher first<br />contact resolution
+      </>
+    ),
+  },
+  {
+    icon: "/images/icon-3.png",
+    title: (
+      <>
+        25%+ analyst<br />productivity<br />improvement
+      </>
+    ),
+  },
+  {
+    icon: "/images/icon-4.png",
+    title: (
+      <>
+        Fewer emergency<br />changes &amp; lower<br />change failure rate
+      </>
+    ),
+  },
+  {
+    icon: "/images/icon-5.png",
+    title: (
+      <>
+        Reduced cost per-<br />ticket through clarity<br />and automation
+      </>
+    ),
+  },
+];
+
+export default function Results({
+  sectionTitle = "The Results Our Clients See",
+  subtitle = "When ITSM is designed properly, the numbers move",
+  metrics = defaultMetrics,
+  highlightText,
+  metricTextClassName = "",
+}: ResultsProps) {
   return (
     <section id="results" className="pt-20 bg-white overflow-hidden">
-      <div className="max-w-[1100px] mx-auto px-3 md:px-4 relative z-20">
+      <div className="max-w-[1536px] mx-auto px-3 md:px-4 relative z-20">
 
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <MotionReveal as="h2" className="text-3xl sm:text-4xl md:text-[44px] font-medium text-slate-900 tracking-tight leading-tight">
-            The Results Our Clients See
+            {sectionTitle}
           </MotionReveal>
           <MotionReveal as="p" className="mt-4 text-lg md:text-[22px] text-slate-900" delay={0.1}>
-            When ITSM is designed properly, the numbers move
+            {subtitle}
           </MotionReveal>
         </div>
 
@@ -77,11 +96,18 @@ export default function Results() {
                 />
               </div>
 
-              <MotionReveal as="p" className="results-metric-text font-medium text-black group-hover:text-white leading-snug" delay={index * 0.08}>
+              <MotionReveal as="p" className={`results-metric-text font-medium text-black group-hover:text-white leading-snug ${metricTextClassName}`} delay={index * 0.08}>
                 {item.title}
               </MotionReveal>
             </div>
           ))}
+          {highlightText && (
+            <div className="col-span-2 lg:col-span-2 flex items-center p-4 sm:p-6 lg:p-8 lg:pl-10">
+              <h3 className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-[#45cc29] leading-snug">
+                {highlightText}
+              </h3>
+            </div>
+          )}
         </div>
 
       </div>

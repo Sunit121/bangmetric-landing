@@ -324,3 +324,18 @@ h6 {
 .jumpstarts-p {
   font-size: 16px !important;
 }
+
+.bangmetric-way-card {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.bangmetric-way-card:hover {
+  background-color: #9383DC !important;
+  box-shadow: 3px -2px 4.3px 0px #4D2A7C inset, 2px 3px 4.3px 0px #00000040;
+}
+
+.bangmetric-way-card:hover h3,
+.bangmetric-way-card:hover p {
+  color: #fff !important;
+}
