@@ -98,7 +98,7 @@ export default function Results({
                 />
               </div>
 
-              <MotionReveal as="p" className={`results-metric-text strategic-result text-md text-black group-hover:text-white leading-snug ${metricTextClassName}`} delay={index * 0.08}>
+              <MotionReveal as="p" className={`results-metric-text strategic-result text-black group-hover:text-white leading-snug`}>
                 {item.title}
               </MotionReveal>
             </div>

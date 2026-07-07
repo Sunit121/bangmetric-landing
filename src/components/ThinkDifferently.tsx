@@ -82,6 +82,22 @@ export default function ThinkDifferently({ nodes = defaultNodes, variant = "hori
             opacity: 0;
           }
         }
+        @keyframes fiberSparkHoriz {
+          0% {
+            transform: translateX(-100%);
+            opacity: 0;
+          }
+          10% {
+            opacity: 1;
+          }
+          80% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateX(400%);
+            opacity: 0;
+          }
+        }
       `}} />
       <div className="max-w-[1536px] mx-auto px-3 md:px-4 relative z-20">
         <div className="text-center mb-16 md:mb-20">
@@ -110,7 +126,7 @@ export default function ThinkDifferently({ nodes = defaultNodes, variant = "hori
                 <div key={colIdx} className={`relative pl-10 space-y-16 ${colIdx === 1 && isTwoCol ? "h-60" : "h-fit"}`}>
                   {colNodes.length > 1 && (
                     <div
-                      className={`absolute left-[19px] top-[14px] ${isTwoCol && colIdx === 1 ? "bottom-[5px]" : "bottom-[30px]"} w-[4px] rounded-full overflow-hidden`}
+                      className={`absolute left-[19px] top-[14px] ${isTwoCol && colIdx === 1 ? "bottom-[5px]" : "bottom-[10px]"} w-[4px] rounded-full overflow-hidden`}
                       style={{ background: "linear-gradient(180deg, #9562EB 0%, #D8CDFF 115.85%)" }}
                     >
                       <div
@@ -216,6 +232,13 @@ export default function ThinkDifferently({ nodes = defaultNodes, variant = "hori
                     <stop offset="0%" stopColor="#9562EB" />
                     <stop offset="215.21%" stopColor="#D8CDFF" />
                   </linearGradient>
+                  <filter id="lineGlowHoriz" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="6" result="blur" />
+                    <feMerge>
+                      <feMergeNode in="blur" />
+                      <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                  </filter>
                 </defs>
                 {/* Horizontal line at y=200 */}
                 <line x1="0" y1="200" x2="1100" y2="200" stroke="url(#paint0_linear_2556_899)" strokeWidth="3" vectorEffect="non-scaling-stroke" strokeLinecap="round" />
@@ -229,6 +252,23 @@ export default function ThinkDifferently({ nodes = defaultNodes, variant = "hori
                 <line x1="330" y1="165" x2="330" y2="260" stroke="url(#verticalStemGradient)" strokeWidth="3" strokeLinecap="butt" vectorEffect="non-scaling-stroke" />
                 <line x1="770" y1="165" x2="770" y2="260" stroke="url(#verticalStemGradient)" strokeWidth="3" strokeLinecap="butt" vectorEffect="non-scaling-stroke" />
               </svg>
+            )}
+
+            {/* The animated horizontal gradient spark overlay */}
+            {variant === "horizontal" && (
+              <div
+                className="absolute left-0 w-full overflow-hidden z-0"
+                style={{ top: "calc(50% - 1.5px)", height: "3px" }}
+              >
+                <div
+                  className="h-full absolute top-0 left-0"
+                  style={{
+                    width: "30%",
+                    background: "linear-gradient(to right, transparent, #9562EB 60%, #FFFFFF 100%)",
+                    animation: "fiberSparkHoriz 3s ease-in-out infinite"
+                  }}
+                />
+              </div>
             )}
 
             {nodes.slice(0, 5).map((node, idx) => {

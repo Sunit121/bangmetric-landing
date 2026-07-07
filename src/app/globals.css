@@ -97,13 +97,6 @@ h2 {
   font-size: 40px !important;
 }
 
-@media (max-width: 767px) {
-  h2 {
-    font-size: 28px !important;
-  }
-}
-
-
 h1,
 h2,
 h3,
@@ -380,4 +373,31 @@ h6 {
 
 .jumpstart-card:hover {
   box-shadow: inset 0px 0px 4.3px 3px #00000047 !important;
+}
+
+
+@media (max-width: 767px) {
+  h2 {
+    font-size: 28px !important;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  .strategic-result {
+    font-size: 18px !important;
+  }
+
+  .bangmetricCardImg {
+    width: 100%;
+  }
+
+  h3.leading-snug {
+    font-size: 18px;
+  }
+
+  .animate-hero-text {
+    text-align: center;
+  }
 }

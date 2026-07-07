@@ -87,7 +87,7 @@ export default function ITOMWhyChoose({
           <div className="w-full flex flex-col mt-10 lg:mt-0 relative">
             {imageRight ? (
               <MotionReveal as="div" delay={0.2} className="w-full relative h-[350px] sm:h-[400px] lg:h-[500px] flex items-start justify-center lg:justify-end">
-                <div className="relative w-[110%] h-[110%] lg:w-[130%] lg:h-[130%] -top-2 lg:-top-15 -right-0 lg:-right-12">
+                <div className="relative w-[110%] h-[110%] lg:w-[130%] lg:h-[130%] -top-2 lg:-top-45 -right-0 lg:-right-12">
                   <Image src={imageRight} alt="Why Choose Us" fill className="object-contain lg:object-right-top" priority />
                 </div>
               </MotionReveal>

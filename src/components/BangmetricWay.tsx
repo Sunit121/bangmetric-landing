@@ -53,24 +53,24 @@ export default function BangmetricWay({
         </div>
 
         {layout === "vertical-cards" ? (
-          <div style={{ display: "flex", flexDirection: "column", gap: "24px", maxWidth: "800px", margin: "0 auto" }}>
+          <div className="flex flex-col gap-6 max-w-[800px] mx-auto">
             {steps.map((step, index) => (
               <MotionReveal
                 as="div"
                 key={index}
                 delay={index * 0.1}
               >
-                <div className="bangmetric-way-card" style={{ display: "flex", flexDirection: "row", alignItems: "center", background: "#F6F5FA", borderRadius: "16px", padding: "25px 25px", border: "1px solid #BEBEBE" }}>
+                <div className="bangmetric-way-card flex flex-col md:flex-row items-start md:items-center bg-[#F6F5FA] rounded-2xl p-6 md:p-[25px] border border-[#BEBEBE] gap-4 md:gap-0">
                   {step.image && (
-                    <div style={{ width: "170px", height: "100px", borderRadius: "10px", overflow: "hidden", flexShrink: 0, marginRight: "24px", position: "relative" }}>
-                      <Image src={step.image} alt={step.title} fill style={{ objectFit: "cover" }} />
+                    <div className="bangmetricCardImg md:w-[170px] h-[200px] md:h-[100px] rounded-[10px] overflow-hidden shrink-0 md:mr-6 relative">
+                      <Image src={step.image} alt={step.title} fill className="object-cover" />
                     </div>
                   )}
-                  <h3 style={{ fontSize: "22px", fontWeight: 700, color: "#000", minWidth: "130px", flexShrink: 0, lineHeight: 1.3, whiteSpace: "pre-line" }}>
+                  <h3 className="text-[20px] md:text-[22px] font-bold text-black md:min-w-[130px] shrink-0 leading-snug md:whitespace-pre-line">
                     {step.title}
                   </h3>
-                  <div style={{ width: "1px", height: "60px", background: "#000", opacity: 0.5, margin: "0 20px", flexShrink: 0 }}></div>
-                  <p style={{ fontSize: "18px", color: "#000", lineHeight: 1.6, fontWeight: 500 }}>
+                  <div className="hidden md:block w-[1px] h-[60px] bg-black opacity-50 mx-5 shrink-0"></div>
+                  <p className="text-[16px] md:text-[18px] text-black leading-relaxed font-medium">
                     {step.desc}
                   </p>
                 </div>

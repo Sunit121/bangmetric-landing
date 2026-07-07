@@ -84,7 +84,7 @@ export default function WhatWeBuild({
       <div className="max-w-[1536px] mx-auto px-3 md:px-4 relative z-20">
 
         {(layout === "overlay" || layout === "staggered") && (
-          <div className="text-center mb-24">
+          <div className="text-center mb-5 md:mb-24">
             <MotionReveal as="h2" className="text-3xl sm:text-4xl md:text-[44px] font-medium text-white tracking-tight leading-tight whitespace-pre-line">
               {sectionTitle}
             </MotionReveal>
@@ -159,21 +159,21 @@ export default function WhatWeBuild({
               {/* Grid of overlapping cards */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 lg:gap-x-10 gap-y-10 md:gap-y-10">
                 {overlapCards?.map((card, idx) => (
-                  <div key={idx} className="relative w-full h-[380px] sm:h-[420px] lg:h-[450px] max-w-full mx-auto md:mx-0">
+                  <div key={idx} className="group relative w-full h-[380px] sm:h-[420px] lg:h-[450px] max-w-full mx-auto md:mx-0">
                     {/* Image container (Top Left) */}
                     <div className="absolute top-0 left-0 w-[85%] h-[90%] rounded-xl overflow-hidden">
                       <Image
                         src={card.image}
                         alt={card.title}
                         fill
-                        className="object-cover opacity-90"
+                        className="object-cover opacity-90 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
                       />
                       {/* Dark gradient overlay on image for readability if needed */}
                       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                     </div>
 
                     {/* Text container (Bottom Right) */}
-                    <div className="absolute bottom-0 right-0 w-[80%] h-[75%] rounded-xl p-6 md:p-8 flex flex-col z-10 border-white/5">
+                    <div className="absolute bottom-0 right-0 w-[88%] md:w-[80%] h-[75%] rounded-xl p-6 md:p-8 flex flex-col z-10 border-white/5">
                       <h3 className="text-2xl font-bold text-white mb-5 leading-snug whitespace-pre-line">
                         {card.title}
                       </h3>
@@ -197,18 +197,18 @@ export default function WhatWeBuild({
             {overlayCards.map((card, idx) => (
               <div
                 key={idx}
-                className="relative w-full h-[450px] sm:h-[380px] lg:h-[450px]"
+                className="group relative w-full h-[450px] sm:h-[380px] lg:h-[450px] overflow-hidden rounded-2xl"
               >
                 {/* Full card background image */}
                 <Image
                   src={card.desktopImage}
                   alt={card.title}
                   fill
-                  className="object-contain sm:object-cover"
+                  className="object-contain sm:object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
                 />
 
                 {/* Text positioned over the black area of the image */}
-                <div className="absolute bottom-0 right-0 w-[85%] sm:w-[75%] lg:w-[75%] h-[45%] sm:h-[90%] lg:h-[78%] p-4 sm:p-6 lg:p-8 flex flex-col">
+                <div className="absolute bottom-0 right-0 w-[75%] h-[60%] sm:h-[90%] lg:h-[78%] p-4 sm:p-6 lg:p-8 flex flex-col">
                   <h3 className="text-[20px] sm:text-[28px] font-bold mb-3 text-white leading-snug">
                     {card.heading}
                   </h3>
