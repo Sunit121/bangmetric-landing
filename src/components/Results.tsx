@@ -69,14 +69,14 @@ export default function Results({
 }: ResultsProps) {
   return (
     <section id="results" className="pt-20 bg-white overflow-hidden">
-      <div className="max-w-[1536px] mx-auto px-3 md:px-4 relative z-20">
+      <div className="max-w-[1200px] mx-auto px-3 md:px-4 relative z-20">
 
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <MotionReveal as="h2" className="text-3xl sm:text-4xl md:text-[44px] font-medium text-slate-900 tracking-tight leading-tight">
+          <MotionReveal as="h2" className="text-3xl sm:text-4xl md:text-[44px] tracking-tight leading-tight">
             {sectionTitle}
           </MotionReveal>
-          <MotionReveal as="p" className="mt-4 text-lg strategic-result text-slate-900" delay={0.1}>
+          <MotionReveal as="p" className="mt-4 text-lg strategic-result" delay={0.1}>
             {subtitle}
           </MotionReveal>
         </div>
@@ -86,7 +86,7 @@ export default function Results({
           {metrics.map((item, index) => (
             <div
               key={index}
-              className="group rounded-md bg-white border border-gray-200 p-4 sm:p-6 flex flex-col hover:bg-[#AB9AE8] hover:text-white hover:border-[#AB9AE8] transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#AB9AE8]/40 min-h-[160px] sm:min-h-[180px]"
+              className="group rounded-md bg-white border border-gray-200 p-4 sm:p-6 flex flex-col hover:bg-[#9383DC] hover:text-white hover:border-[#9383DC] transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#9383DC]/40 min-h-[160px] sm:min-h-[180px]"
             >
               <div className="mb-4 sm:mb-6 flex-shrink-0">
                 <Image
@@ -98,7 +98,7 @@ export default function Results({
                 />
               </div>
 
-              <MotionReveal as="p" className={`results-metric-text strategic-result text-black group-hover:text-white leading-snug`}>
+              <MotionReveal as="p" className={`results-metric-text strategic-result group-hover:text-white leading-snug`}>
                 {item.title}
               </MotionReveal>
             </div>

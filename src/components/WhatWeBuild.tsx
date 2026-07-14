@@ -81,7 +81,7 @@ export default function WhatWeBuild({
       className="py-24 relative overflow-hidden bg-black text-white bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: "url('/images/build-with-service-bg.png')" }}
     >
-      <div className="max-w-[1536px] mx-auto px-3 md:px-4 relative z-20">
+      <div className="max-w-[1100px] mx-auto px-3 md:px-4 relative z-20">
 
         {(layout === "overlay" || layout === "staggered") && (
           <div className="text-center mb-5 md:mb-24">
@@ -95,41 +95,49 @@ export default function WhatWeBuild({
           <>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-8">
               {overlayCards.map((card, idx) => (
-                <div key={idx} className="flex flex-col lg:block relative w-full rounded-xl overflow-hidden group bg-slate-900/40 border border-slate-800 lg:bg-transparent lg:border-transparent">
-                  <div className="relative w-full aspect-[2/1] lg:aspect-auto lg:h-full">
-                    {/* Desktop Image */}
+                <div key={idx} className="w-full rounded-xl overflow-hidden group md:max-w-[600px] md:mx-auto">
+                  <div className="md:hidden relative h-[250px] overflow-hidden rounded-lg">
+                    <Image
+                      src={card.mobileImage || card.desktopImage}
+                      alt={card.title}
+                      fill
+                      className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                    />
+                    <div className="absolute right-2 top-[85px] w-[240px]">
+                      <h3 className="text-[14px] font-semibold mb-3 ml-2 text-white">
+                        {card.heading}
+                      </h3>
+                      <ul className="space-y-1 text-[12px] leading-[1.3] text-[#E5E5E5]">
+                        {card.features.map((feature, fIdx) => (
+                          <li key={fIdx} className="flex gap-2 ml-2">
+                            <span>•</span>
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="hidden md:block relative h-[300px] overflow-hidden rounded-lg">
                     <Image
                       src={card.desktopImage}
                       alt={card.title}
-                      width={600}
-                      height={300}
-                      style={{ width: "100%", height: "100%" }}
-                      className="w-full h-full object-cover hidden lg:block group-hover:scale-[1.03] transition-transform duration-500"
+                      fill
+                      className="object-cover scale-[1.03] group-hover:scale-[1.05] transition-transform duration-500"
                     />
-                    {/* Mobile Image */}
-                    <Image
-                      src={card.mobileImage || card.desktopImage}
-                      alt={`${card.title} Mobile`}
-                      width={600}
-                      height={300}
-                      style={{ width: "100%", height: "100%" }}
-                      className="w-full h-full object-cover block lg:hidden group-hover:scale-[1.03] transition-transform duration-500"
-                    />
-                  </div>
-
-                  {/* Text container - overlays on desktop, stacks on mobile */}
-                  <div className="p-6 flex flex-col lg:absolute lg:p-0 lg:top-[120px] xl:top-[140px] lg:right-6 lg:w-[320px] xl:w-[340px]">
-                    <h3 className="text-[18px] font-bold mb-3 text-white leading-snug">
-                      {card.heading}
-                    </h3>
-                    <ul className="space-y-1.5 text-[10px] lg:text-[10px] leading-snug">
-                      {card.features.map((feature, fIdx) => (
-                        <li key={fIdx} className="flex items-start text-gray-200 leading-snug">
-                          <span className="mr-3 mt-1.5 w-1 h-1 bg-white rounded-full flex-shrink-0"></span>
-                          <span className="font-normal">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="absolute right-[30px] top-[90px] w-[320px]">
+                      <h3 className="text-[20px] font-semibold mb-4 ml-2 text-white">
+                        {card.heading}
+                      </h3>
+                      <ul className="space-y-2 text-[14px] leading-[1.4] text-[#E5E5E5]">
+                        {card.features.map((feature, fIdx) => (
+                          <li key={fIdx} className="flex gap-2 ml-4">
+                            <span>•</span>
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -159,32 +167,51 @@ export default function WhatWeBuild({
               {/* Grid of overlapping cards */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 lg:gap-x-10 gap-y-10 md:gap-y-10">
                 {overlapCards?.map((card, idx) => (
-                  <div key={idx} className="group relative w-full h-[380px] sm:h-[420px] lg:h-[450px] max-w-full mx-auto md:mx-0">
-                    {/* Image container (Top Left) */}
-                    <div className="absolute top-0 left-0 w-[85%] h-[90%] rounded-xl overflow-hidden">
+                  <div key={idx} className="w-full rounded-lg overflow-hidden group bg-slate-900/40 border border-slate-800 md:bg-transparent md:border-transparent">
+                    {/* Mobile: stacked layout */}
+                      <div className="md:hidden relative h-[250px] overflow-hidden rounded-lg">
                       <Image
                         src={card.image}
                         alt={card.title}
                         fill
-                        className="object-cover opacity-90 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
+                        className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
                       />
-                      {/* Dark gradient overlay on image for readability if needed */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                      <div className="absolute right-2 top-[85px] w-[240px]">
+                        <h3 className="text-[14px] font-semibold mb-3 ml-2 text-white whitespace-pre-line">
+                          {card.title}
+                        </h3>
+                        <ul className="space-y-1 text-[12px] leading-[1.3] text-[#E5E5E5]">
+                          {card.features.map((feature, fIdx) => (
+                            <li key={fIdx} className="flex gap-2 ml-2">
+                              <span>•</span>
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
 
-                    {/* Text container (Bottom Right) */}
-                    <div className="absolute bottom-0 right-0 w-[88%] md:w-[80%] h-[75%] rounded-xl p-6 md:p-8 flex flex-col z-10 border-white/5">
-                      <h3 className="text-2xl font-bold text-white mb-5 leading-snug whitespace-pre-line">
-                        {card.title}
-                      </h3>
-                      <ul className="space-y-2.5 text-[15px] sm:text-[18px] text-white">
-                        {card.features.map((feature, fIdx) => (
-                          <li key={fIdx} className="flex items-start">
-                            <span className="mr-3 mt-2 w-[4px] h-[4px] rounded-full bg-white flex-shrink-0" />
-                            <span className="leading-snug whitespace-pre-line font-normal">{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
+                    {/* Desktop: overlay layout */}
+                    <div className="hidden md:block group relative h-[300px] overflow-hidden rounded-lg">
+                      <Image
+                        src={card.image}
+                        alt={card.title}
+                        fill
+                        className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
+                      />
+                      <div className="absolute right-[40px] top-[85px] w-[320px]">
+                        <h3 className="text-[20px] font-bold mb-4 ml-2 text-white whitespace-pre-line">
+                          {card.title}
+                        </h3>
+                        <ul className="space-y-2 text-[14px] leading-[1.4] text-[#E5E5E5]">
+                          {card.features.map((feature, fIdx) => (
+                            <li key={fIdx} className="flex gap-2 ml-4">
+                              <span>•</span>
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -192,38 +219,59 @@ export default function WhatWeBuild({
             </div>
           </div>
         ) : layout === "staggered" ? (
-          /* Staggered layout: image on left, text box overlapping on right, right column pushed down */
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 pb-32">
+          /* Staggered layout: mobile stacked, desktop with overlay text */
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 pb-[10px] md:pb-32">
             {overlayCards.map((card, idx) => (
-              <div
-                key={idx}
-                className="group relative w-full h-[450px] sm:h-[380px] lg:h-[450px] overflow-hidden rounded-2xl"
-              >
-                {/* Full card background image */}
-                <Image
-                  src={card.desktopImage}
-                  alt={card.title}
-                  fill
-                  className="object-contain sm:object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
-                />
+              <div key={idx} className="w-full rounded-lg overflow-hidden group bg-slate-900/40 border border-slate-800 md:bg-transparent md:border-transparent">
+                {/* Mobile: overlay layout */}
+                <div className="md:hidden relative h-[250px] overflow-hidden rounded-lg">
+                  <Image
+                    src={card.mobileImage || card.desktopImage}
+                    alt={card.title}
+                    fill
+                    className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                  />
+                  <div className="absolute right-2 top-[80px] w-[240px]">
+                    <h3 className="text-[14px] font-semibold mb-3 ml-2 text-white">
+                      {card.heading}
+                    </h3>
+                    <ul className="space-y-1 text-[12px] leading-[1.3] text-[#E5E5E5]">
+                      {card.features.map((feature, fIdx) => (
+                        <li key={fIdx} className="flex gap-2 ml-2">
+                          <span>•</span>
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
 
-                {/* Text positioned over the black area of the image */}
-                <div className="absolute bottom-0 right-0 w-[75%] h-[60%] sm:h-[90%] lg:h-[78%] p-4 sm:p-6 lg:p-8 flex flex-col">
-                  <h3 className="text-[20px] sm:text-[28px] font-bold mb-3 text-white leading-snug">
-                    {card.heading}
-                  </h3>
-                  <ul className="space-y-2 text-[16px] sm:text-[18px] text-white font-medium leading-snug mt-3">
-                    {card.features.map((feature, fIdx) => (
-                      <li key={fIdx} className="flex items-start">
-                        <span className="mr-3 mt-2 w-[4px] h-[4px] bg-white rounded-full flex-shrink-0"></span>
-                        <span className="font-normal">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
+                {/* Desktop: overlay layout */}
+                <div className="hidden md:block group relative h-[300px] overflow-hidden rounded-lg">
+                  <Image
+                    src={card.desktopImage}
+                    alt={card.title}
+                    fill
+                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
+                  />
+                  <div className="absolute right-[40px] top-[85px] w-[320px]">
+                    <h3 className="text-[20px] font-bold mb-4 ml-2 text-white">
+                      {card.heading}
+                    </h3>
+                    <ul className="space-y-2 text-[14px] leading-[1.4] text-[#E5E5E5]">
+                      {card.features.map((feature, fIdx) => (
+                        <li key={fIdx} className="flex gap-2 ml-4">
+                          <span>•</span>
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
+        
         ) : (
           /* ITOM/SPM-style: 3x2 image grid with titles */
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

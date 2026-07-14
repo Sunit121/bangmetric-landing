@@ -91,6 +91,9 @@ body {
 
 p {
   font-size: 20px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-style: normal;
 }
 
 h2 {
@@ -136,36 +139,15 @@ h6 {
     border-color 0.5s ease,
     transform 0.4s ease,
     box-shadow 0.4s ease;
-  cursor: pointer;
 }
 
 .strategic-result {
   font-size: 22px !important;
 }
 
-.jumpstart-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(120deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.3) 50%,
-      transparent 100%);
-  transition: none;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.jumpstart-card:hover::before {
-  animation: shimmer-sweep 0.7s ease forwards;
-}
-
 .jumpstart-card:hover {
-  background: #AB9AE8 !important;
-  border-color: #AB9AE8 !important;
+  background: #9F9EF2 !important;
+  border-color: #9F9EF2 !important;
   transform: translateY(-4px);
   box-shadow: 0 20px 40px rgba(171, 154, 232, 0.3);
 }
@@ -180,16 +162,6 @@ h6 {
 .jumpstart-card:hover p,
 .jumpstart-card:hover span {
   color: #ffffff !important;
-}
-
-@keyframes shimmer-sweep {
-  0% {
-    left: -100%;
-  }
-
-  100% {
-    left: 120%;
-  }
 }
 
 @keyframes space-drift {
@@ -354,16 +326,19 @@ h6 {
 
 .jumpstarts-p {
   font-size: 16px !important;
+  font-weight: 400 !important;
+  color:#000;
 }
 
 .bangmetric-way-card {
   transition: all 0.3s ease;
-  cursor: pointer;
 }
 
 .bangmetric-way-card:hover {
   background-color: #9383DC !important;
-  box-shadow: 3px -2px 4.3px 0px #4D2A7C inset, 2px 3px 4.3px 0px #00000040;
+  box-shadow: 3px -2px 4.3px 0px #4D2A7C inset;
+  box-shadow: 2px 3px 4.3px 0px #00000040;
+
 }
 
 .bangmetric-way-card:hover h3,

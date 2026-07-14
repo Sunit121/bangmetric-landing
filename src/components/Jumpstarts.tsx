@@ -70,7 +70,7 @@ export default function Jumpstarts({
             >
               {sectionTitle}
             </MotionReveal>
-            <MotionReveal as="p" className="mt-5 jumpstarts-p text-black text-[18px] font-light leading-relaxed max-w-xl" delay={0.1}>
+            <MotionReveal as="p" className="mt-5 jumpstarts-p text-[18px] leading-relaxed max-w-xl" delay={0.1}>
               {subtitle}
             </MotionReveal>
           </div>
@@ -94,7 +94,7 @@ export default function Jumpstarts({
           {cards.map((card, index) => (
             <div
               key={index}
-              className="group jumpstart-card rounded-2xl p-8 sm:p-10 flex flex-col justify-between min-h-[260px] border-2 border-[#d1d5db] hover:bg-[#AB9AE8] hover:border-[#AB9AE8] hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+              className="group jumpstart-card rounded-2xl p-8 sm:p-10 flex flex-col justify-between min-h-[260px] border-2 border-[#d1d5db] hover:bg-[#9F9EF2 ] hover:border-[#9F9EF2] transition-all "
               style={{ background: "transparent" }}
             >
               <div>
@@ -119,7 +119,6 @@ export default function Jumpstarts({
             href="#contact"
             className="group relative inline-flex items-center justify-center px-15 py-3 text-sm sm:text-base font-normal rounded-[10px] bg-brand-purple text-white hover:shadow-xl hover:shadow-brand-purple/40 hover:-translate-y-1 active:scale-95 overflow-hidden transition-all duration-300 ease-out"
           >
-            <span className="absolute inset-0 w-[150%] h-full -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-20deg] group-hover:translate-x-[150%] transition-transform duration-700 ease-in-out" />
             <span className="relative z-10 flex items-center gap-2">
               {buttonText}
             </span>
