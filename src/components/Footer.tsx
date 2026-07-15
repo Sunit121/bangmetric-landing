@@ -11,7 +11,7 @@ export default function Footer() {
       className="bg-black overflow-hidden"
       style={{ paddingTop: "64px", paddingBottom: "150px", paddingLeft: "20px", paddingRight: "20px" }}
     >
-      <div className="max-w-[1536px] mx-auto px-3">
+      <div className="container">
 
         {/* ── ROW 1: Logo + Slogan ── */}
         <div style={{ marginBottom: "80px" }}>

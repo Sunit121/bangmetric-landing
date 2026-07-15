@@ -59,7 +59,7 @@ export default function Jumpstarts({
 }: JumpstartsProps) {
   return (
     <section id="jumpstarts" className="py-20 md:py-28 bg-white overflow-hidden">
-      <div className="container mx-auto px-3 md:px-4 max-w-[1536px] relative z-20">
+      <div className="container">
 
         {/* Top area: Title on the left, Cube image on the right */}
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-8 mb-14">

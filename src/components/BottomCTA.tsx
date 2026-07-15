@@ -26,7 +26,7 @@ export default function BottomCTA({
         backgroundPosition: "center right",
       }}
     >
-      <div className="max-w-[1536px] mx-auto px-3 md:px-4 relative z-10">
+      <div className="container">
         <div className="max-w-2xl text-left space-y-6">
           <div className="space-y-2">
             <MotionReveal as="h4" className="text-white text-base sm:text-lg md:text-xl font-normal font=[22px] tracking-wide opacity-90">
@@ -34,7 +34,7 @@ export default function BottomCTA({
             </MotionReveal>
             <MotionReveal
               as="h2"
-              className="text-4xl sm:text-5xl md:text-[3.2rem] font-bold text-white tracking-tight leading-tight"
+              className="text-4xl sm:text-5xl md:text-[3.2rem] font-bold text-white tracking-tight leading-tight bottom-cta-heading"
               delay={0.1}
             >
               {title}

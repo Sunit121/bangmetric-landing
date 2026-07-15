@@ -99,7 +99,7 @@ export default function ThinkDifferently({ nodes = defaultNodes, variant = "hori
           }
         }
       `}} />
-      <div className="max-w-[1536px] mx-auto px-3 md:px-4 relative z-20">
+      <div className="container">
         <div className="text-center mb-16 md:mb-20">
           <MotionReveal
             as="h2"

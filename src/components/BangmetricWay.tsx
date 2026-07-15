@@ -40,16 +40,16 @@ export default function BangmetricWay({
 }: BangmetricWayProps) {
   return (
     <section id="methodology" className="pt-30 pb-30 bg-white overflow-hidden">
-      <div className="max-w-[1536px] mx-auto px-6 md:px-8 relative z-20">
+      <div className="container">
 
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-20">
           <MotionReveal as="h2" className="text-3xl sm:text-4xl md:text-5xl text-slate-900 tracking-tight leading-tight">
             The BANGMETRIC Way
           </MotionReveal>
-          <MotionReveal as="p" className="mt-4 text-base md:text-lg text-slate-600 font-light" delay={0.1}>
+          {/* <MotionReveal as="p" className="mt-4 text-base md:text-lg text-slate-600 font-light" delay={0.1}>
             {subtitle}
-          </MotionReveal>
+          </MotionReveal> */}
         </div>
 
         {layout === "vertical-cards" ? (
@@ -89,7 +89,7 @@ export default function BangmetricWay({
                     <span className="absolute inset-0 rounded-full bg-[#9383DC] opacity-0 group-hover:animate-ping group-hover:opacity-40" style={{ animationDuration: '1.5s' }} />
                   </div>
                   <div
-                    className="w-full min-h-[120px] rounded-[10px] flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-0 p-[30px] sm:px-6 sm:py-4 md:px-8 border border-[#D8D8D8] bg-transparent text-black transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:bg-[#9383DC] group-hover:text-white group-hover:border-[#9383DC] group-hover:shadow-[0_16px_32px_rgba(147,131,220,0.2)]"
+                    className="w-full min-h-[120px] rounded-[10px] flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-0 p-[30px] sm:px-6 sm:py-4 md:px-8 border border-[#D8D8D8] bg-transparent text-black transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:bg-[#9383DC] group-hover:text-white group-hover:border-[#9383DC] group-hover:[box-shadow:3px_-2px_4.3px_0px_#4D2A7C_inset,2px_3px_4.3px_0px_#00000040]"
                   >
                     <div className="sm:w-[180px] text-[14px] sm:text-[16px] md:text-[18px] font-semibold leading-tight shrink-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1.5">
                       {step.title}

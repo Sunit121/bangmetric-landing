@@ -32,7 +32,7 @@ export default function Intro({
 }: IntroProps) {
   return (
     <section id="intro" className="py-15 overflow-hidden">
-      <div className="max-w-[1536px] mx-auto px-3 md:px-4 relative z-20">
+      <div className="container">
         <div className="flex flex-col md:flex-row gap-12 items-start">
 
           {/* Left Column: Heading */}

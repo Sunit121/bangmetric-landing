@@ -24,10 +24,10 @@ export default function ITOMWhyChoose({
     </>
   ),
   paragraphs = [
-    <React.Fragment key="1">
+    <p key="1" className="why-organization-txt">
       They're done with noisy tools and reactive operations.<br />
       They want clarity, control, and confidence.
-    </React.Fragment>,
+    </p>,
     <p key="2" className="mt-1">BANGMETRIC brings:</p>
   ],
   points = [
@@ -53,7 +53,7 @@ export default function ITOMWhyChoose({
 
   return (
     <section className="py-20 md:py-28 bg-[#F6F5FA] relative z-10">
-      <div className="max-w-[1536px] mx-auto px-6 md:px-12 relative z-20">
+      <div className="container">
         <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start`}>
           {/* Left Column */}
           <div className="w-full">

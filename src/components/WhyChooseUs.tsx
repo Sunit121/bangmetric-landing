@@ -41,7 +41,7 @@ export default function WhyChooseUs({
 }: WhyChooseUsProps) {
   return (
     <section id="why-choose-us" className="pt-24 pb-0 bg-[#F3F3F5] relative z-10 overflow-visible">
-      <div className="max-w-[1536px] mx-auto px-3 md:px-4 relative z-20">
+      <div className="container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-12 lg:gap-y-0">
 
           {/* Heading (Always Top on Mobile, Top Left on Desktop) */}

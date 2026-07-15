@@ -45,7 +45,7 @@ export default function Header() {
           : "bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm py-5 border-b border-transparent"
           }`}
       >
-        <div className="max-w-[1536px] mx-auto px-3 md:px-4">
+        <div className="container">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <Link href="/" className="flex items-center group">
