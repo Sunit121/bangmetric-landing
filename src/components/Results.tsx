@@ -86,7 +86,7 @@ export default function Results({
           {metrics.map((item, index) => (
             <div
               key={index}
-              className="group rounded-md bg-white border border-gray-200 p-3 sm:p-4 lg:p-6 flex flex-col hover:bg-[#9383DC] hover:text-white hover:border-[#9383DC] transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#9383DC]/40 h-[190px] sm:h-[210px] md:h-[230px] lg:h-[250px] xl:h-[270px]"
+              className="group rounded-md bg-white border border-gray-200 p-3 sm:p-4 lg:p-6 flex flex-col hover:bg-[#9383DC] hover:text-white hover:border-[#9383DC] transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#9383DC]/40 h-[200px]"
             >
               <div className="mb-3 sm:mb-4 lg:mb-6 flex-shrink-0">
                 <Image
@@ -104,7 +104,7 @@ export default function Results({
             </div>
           ))}
           {highlightText && (
-            <div className={`col-span-2 ${highlightColSpan === 3 ? 'lg:col-span-3' : highlightColSpan === 4 ? 'lg:col-span-4' : 'lg:col-span-2'} flex items-center justify-center p-3 sm:p-4 lg:p-6 lg:pl-10 h-[190px] sm:h-[210px] md:h-[230px] lg:h-[250px] xl:h-[270px]`}>
+            <div className={`col-span-2 ${highlightColSpan === 3 ? 'lg:col-span-3' : highlightColSpan === 4 ? 'lg:col-span-4' : 'lg:col-span-2'} flex items-center justify-center p-3 sm:p-4 lg:p-6 lg:pl-10 h-[200px]`}>
               <h3 className="text-[18px] sm:text-[20px] md:text-[24px] lg:text-[30px] xl:text-[34px] font-bold text-green leading-snug">
                 {highlightText}
               </h3>
