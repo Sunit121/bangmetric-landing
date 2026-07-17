@@ -68,44 +68,44 @@ export default function Results({
   highlightColSpan = 2,
 }: ResultsProps) {
   return (
-    <section id="results" className="pt-20 bg-white overflow-hidden">
+    <section id="results" className="pt-16 pb-12 sm:pt-20 sm:pb-16 lg:pt-24 lg:pb-20 bg-white overflow-hidden">
       <div className="min-container">
 
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <MotionReveal as="h2" className="text-3xl sm:text-4xl md:text-[44px] tracking-tight leading-tight">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12 lg:mb-16">
+          <MotionReveal as="h2" className="text-[28px] sm:text-[32px] md:text-[38px] lg:text-[44px] tracking-tight leading-tight">
             {sectionTitle}
           </MotionReveal>
-          <MotionReveal as="p" className="mt-4 text-lg strategic-result" delay={0.1}>
+          <MotionReveal as="p" className="mt-3 sm:mt-4 text-base sm:text-lg lg:text-xl" delay={0.1}>
             {subtitle}
           </MotionReveal>
         </div>
 
         {/* 5-Column Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-6">
           {metrics.map((item, index) => (
             <div
               key={index}
-              className="group rounded-md bg-white border border-gray-200 p-4 sm:p-6 flex flex-col hover:bg-[#9383DC] hover:text-white hover:border-[#9383DC] transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#9383DC]/40 min-h-[160px] sm:min-h-[180px]"
+              className="group rounded-md bg-white border border-gray-200 p-3 sm:p-4 lg:p-6 flex flex-col hover:bg-[#9383DC] hover:text-white hover:border-[#9383DC] transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#9383DC]/40 h-[190px] sm:h-[210px] md:h-[230px] lg:h-[250px] xl:h-[270px]"
             >
-              <div className="mb-4 sm:mb-6 flex-shrink-0">
+              <div className="mb-3 sm:mb-4 lg:mb-6 flex-shrink-0">
                 <Image
                   src={item.icon}
                   alt="Result Icon"
                   width={60}
                   height={60}
-                  className="w-12 sm:w-[60px] h-auto object-contain transition-all duration-300 group-hover:brightness-0 group-hover:invert group-hover:scale-110 group-hover:-rotate-3"
+                  className="w-10 sm:w-12 lg:w-[60px] h-auto object-contain transition-all duration-300 group-hover:brightness-0 group-hover:invert group-hover:scale-110 group-hover:-rotate-3"
                 />
               </div>
 
-              <MotionReveal as="p" className={`results-metric-text strategic-result group-hover:text-white leading-snug`}>
+              <MotionReveal as="p" className={`results-metric-text ${metricTextClassName} group-hover:text-white leading-snug text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px]`}>
                 {item.title}
               </MotionReveal>
             </div>
           ))}
           {highlightText && (
-            <div className={`col-span-2 ${highlightColSpan === 3 ? 'lg:col-span-3' : highlightColSpan === 4 ? 'lg:col-span-4' : 'lg:col-span-2'} flex items-center justify-center p-4 sm:p-6 lg:p-8 lg:pl-10`}>
-              <h3 className="text-[20px] sm:text-[24px] lg:text-[36px] font-bold text-green leading-snug">
+            <div className={`col-span-2 ${highlightColSpan === 3 ? 'lg:col-span-3' : highlightColSpan === 4 ? 'lg:col-span-4' : 'lg:col-span-2'} flex items-center justify-center p-3 sm:p-4 lg:p-6 lg:pl-10 h-[190px] sm:h-[210px] md:h-[230px] lg:h-[250px] xl:h-[270px]`}>
+              <h3 className="text-[18px] sm:text-[20px] md:text-[24px] lg:text-[30px] xl:text-[34px] font-bold text-green leading-snug">
                 {highlightText}
               </h3>
             </div>
