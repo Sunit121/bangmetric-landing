@@ -220,7 +220,6 @@ export default function ITOperationsManagement() {
           subtitle="When ITOM is designed properly, operations transform"
           metrics={itomMetrics}
           highlightText="Not because we ingested more data, but because we connected the right data."
-          metricTextClassName="!text-[22px]"
         />
 
         <BangmetricWay
