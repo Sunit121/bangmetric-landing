@@ -98,7 +98,7 @@ export default function Results({
                 />
               </div>
 
-              <MotionReveal as="p" className={`results-metric-text ${metricTextClassName} group-hover:text-white leading-snug text-[12px] sm:text-[13px] md:text-[14px] lg:text-[15px] xl:text-[16px]`}>
+              <MotionReveal as="p" className={`results-metric-text ${metricTextClassName} group-hover:text-white leading-snug text-[14px] md:text-[16px] lg:text-[18px]`}>
                 {item.title}
               </MotionReveal>
             </div>

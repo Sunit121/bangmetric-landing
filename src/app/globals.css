@@ -329,9 +329,9 @@ h6 {
   animation: heroTextReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
 }
 
-.results-metric-text {
-  font-size: 16px!important;
-}
+/* .results-metric-text {
+  font-size: 18px!important;
+} */
 
 .bangmetric-way-desc {
   font-size: 14px !important;
