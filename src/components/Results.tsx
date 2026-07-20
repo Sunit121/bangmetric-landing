@@ -81,36 +81,48 @@ export default function Results({
           </MotionReveal>
         </div>
 
+
         {/* 5-Column Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 lg:gap-6">
           {metrics.map((item, index) => (
             <div
               key={index}
-              className="group rounded-md bg-white border border-gray-200 p-3 sm:p-4 lg:p-6 flex flex-col hover:bg-[#9383DC] hover:text-white hover:border-[#9383DC] transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#9383DC]/40 h-[200px]"
+              className="group min-w-0 rounded-md bg-white border border-gray-200 p-3 md:p-4 lg:p-5 hover:bg-[#9383DC] hover:text-white hover:border-[#9383DC] transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#9383DC]/40 min-h-[160px] md:min-h-[180px]"
             >
-              <div className="mb-3 sm:mb-4 lg:mb-6 flex-shrink-0">
+              <div className="mb-3 sm:mb-4 lg:mb-5 flex-shrink-0">
                 <Image
                   src={item.icon}
                   alt="Result Icon"
                   width={60}
                   height={60}
-                  className="w-10 sm:w-12 lg:w-[60px] h-auto object-contain transition-all duration-300 group-hover:brightness-0 group-hover:invert group-hover:scale-110 group-hover:-rotate-3"
+                  className="w-9 sm:w-10 lg:w-[50px] h-auto object-contain transition-all duration-300 group-hover:brightness-0 group-hover:invert group-hover:scale-110 group-hover:-rotate-3"
                 />
               </div>
 
-              <MotionReveal as="p" className={`results-metric-text ${metricTextClassName} group-hover:text-white leading-snug text-[14px] md:text-[16px] lg:text-[18px]`}>
+              <MotionReveal as="p" className={`results-metric-text ${metricTextClassName} group-hover:text-white leading-snug text-[13px] md:text-[14px] lg:text-[15px]`}>
                 {item.title}
               </MotionReveal>
             </div>
           ))}
+
+          {/* Desktop highlight — inside grid, hidden on mobile */}
           {highlightText && (
-            <div className={`col-span-2 ${highlightColSpan === 3 ? 'lg:col-span-3' : highlightColSpan === 4 ? 'lg:col-span-4' : 'lg:col-span-2'} flex items-center justify-center p-3 sm:p-4 lg:p-6 lg:pl-10 h-[200px]`}>
-              <h3 className="text-[18px] sm:text-[20px] md:text-[24px] lg:text-[30px] xl:text-[34px] font-bold text-green leading-snug">
+            <div className={`hidden md:flex col-span-2 ${highlightColSpan === 3 ? 'md:col-span-3' : highlightColSpan === 4 ? 'md:col-span-4' : 'md:col-span-2'} items-center justify-center md:p-4 lg:p-6 lg:pl-10 md:h-auto lg:h-[200px]`}>
+              <h3 className="text-[20px] lg:text-[28px] xl:text-[32px] font-bold text-green leading-snug">
                 {highlightText}
               </h3>
             </div>
           )}
         </div>
+
+        {/* Mobile highlight — shown after cards on small screens */}
+        {highlightText && (
+          <div className="block md:hidden mt-6">
+            <h3 className="text-[22px] font-bold text-green leading-snug">
+              {highlightText}
+            </h3>
+          </div>
+        )}
 
       </div>
     </section>
