@@ -126,7 +126,7 @@ export default function ThinkDifferently({ nodes = defaultNodes, variant = "hori
                 <div key={colIdx} className={`relative pl-10 space-y-16 ${colIdx === 1 && isTwoCol ? "h-60" : "h-fit"}`}>
                   {colNodes.length > 1 && (
                     <div
-                      className={`absolute left-[19px] top-[14px] ${isTwoCol && colIdx === 1 ? "bottom-[5px]" : "bottom-[10px]"} w-[4px] rounded-full overflow-hidden`}
+                      className={`absolute left-[19px] top-[0px] ${isTwoCol && colIdx === 1 ? "bottom-[5px]" : "bottom-[10px]"} w-[4px] rounded-full overflow-hidden`}
                       style={{ background: "linear-gradient(180deg, #9562EB 0%, #D8CDFF 115.85%)" }}
                     >
                       <div
