@@ -22,6 +22,7 @@ interface MotionRevealProps {
   delay?: number;
   duration?: number;
   y?: number;
+  x?: number;
 }
 
 export default function MotionReveal({
@@ -31,6 +32,7 @@ export default function MotionReveal({
   delay = 0,
   duration = 0.8,
   y = 15,
+  x = 0,
 }: MotionRevealProps) {
   // Correctly access the motion component corresponding to the requested tag
   const MotionComponent = motion[as] as any;
@@ -38,8 +40,8 @@ export default function MotionReveal({
   return (
     <MotionComponent
       className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y, x }}
+      whileInView={{ opacity: 1, y: 0, x: 0 }}
       viewport={{ once: true, margin: "0px 0px -80px 0px" }}
       transition={{
         duration,

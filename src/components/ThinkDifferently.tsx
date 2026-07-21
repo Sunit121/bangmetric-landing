@@ -123,23 +123,35 @@ export default function ThinkDifferently({ nodes = defaultNodes, variant = "hori
               if (colNodes.length === 0) return null;
 
               return (
-                <div key={colIdx} className={`relative pl-10 space-y-16 ${colIdx === 1 && isTwoCol ? "h-60" : "h-fit"}`}>
-                  {colNodes.length > 1 && (
-                    <div
-                      className={`absolute left-[19px] top-[0px] ${isTwoCol && colIdx === 1 ? "bottom-[5px]" : "bottom-[10px]"} w-[4px] rounded-full overflow-hidden`}
-                      style={{ background: "linear-gradient(180deg, #9562EB 0%, #D8CDFF 115.85%)" }}
-                    >
-                      <div
-                        className="w-full h-[30%] absolute top-0 left-0"
-                        style={{
-                          background: "linear-gradient(to bottom, transparent, #9562EB 60%, #FFFFFF 100%)",
-                          animation: "fiberSpark 2.5s ease-in-out infinite"
-                        }}
-                      />
-                    </div>
-                  )}
+                <div key={colIdx} className={`relative pl-10 space-y-16 ${colIdx === 1 && isTwoCol ? "h-65" : "h-fit"}`}>
                   {colNodes.map((node, idx) => (
                     <div key={idx} className="relative flex items-start">
+                      {/* Per-item connector: spans from this dot center to next dot center.
+                          top=19px = dot center (mt-1=4px + half dot=15px).
+                          height=calc(100%+4rem): 100% = this item's text height, 4rem = space-y-16 gap.
+                          This always ends exactly at the next dot's center regardless of text length. */}
+                      {idx < colNodes.length - 1 && (
+                        <div
+                          className="absolute overflow-hidden"
+                          style={{
+                            left: "-20.5px",
+                            top: "19px",
+                            width: "4px",
+                            height: "calc(100% + 4rem)",
+                            background: "linear-gradient(180deg, #9562EB 0%, #D8CDFF 115.85%)",
+                            borderRadius: "2px",
+                            zIndex: 0,
+                          }}
+                        >
+                          <div
+                            className="w-full h-[30%] absolute top-0 left-0"
+                            style={{
+                              background: "linear-gradient(to bottom, transparent, #9562EB 60%, #FFFFFF 100%)",
+                              animation: "fiberSpark 2.5s ease-in-out infinite"
+                            }}
+                          />
+                        </div>
+                      )}
                       <div className="absolute -left-[33.5px] mt-1 z-10">
                         <CircleDot size={24} />
                       </div>
@@ -318,12 +330,12 @@ export default function ThinkDifferently({ nodes = defaultNodes, variant = "hori
                 <CircleDot size={20} />
               </div>
               <div className="pl-3">
-                <MotionReveal as="p" className="text-base text-slate-800 dark:text-slate-200 leading-relaxed">
-                  <span className="font-bold text-slate-900 dark:text-white">{node.bold}</span>
+                <MotionReveal as="p" className="text-base dark:text-slate-200 leading-relaxed !text-[14px]">
+                  <span className="dark:text-white">{node.bold}</span>
                   {node.detail && (
                     <>
                       {" "}
-                      <span className="text-slate-600 dark:text-slate-400">{node.detail}</span>
+                      <span className="dark:text-slate-400">{node.detail}</span>
                     </>
                   )}
                 </MotionReveal>

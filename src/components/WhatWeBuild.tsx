@@ -103,19 +103,19 @@ export default function WhatWeBuild({
                       fill
                       className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
                     />
-                    <div className="absolute right-2 top-[85px] w-[240px]">
-                      <h3 className="text-[14px] font-semibold mb-3 ml-2 text-white">
-                        {card.heading}
-                      </h3>
-                      <ul className="space-y-1 text-[12px] leading-[1.3] text-[#E5E5E5]">
-                        {card.features.map((feature, fIdx) => (
-                          <li key={fIdx} className="flex gap-2 ml-2">
-                            <span>•</span>
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    <MotionReveal as="div" className="absolute right-2 top-[85px] w-[240px]" y={0} x={idx % 2 === 0 ? -30 : 30} delay={0.2} duration={0.7}>
+                       <h3 className="text-[14px] font-semibold mb-3 ml-2 text-white">
+                         {card.heading}
+                       </h3>
+                       <ul className="space-y-1 text-[12px] leading-[1.3] text-[#E5E5E5]">
+                         {card.features.map((feature, fIdx) => (
+                           <li key={fIdx} className="flex gap-2 ml-2">
+                             <span>•</span>
+                             <span>{feature}</span>
+                           </li>
+                         ))}
+                       </ul>
+                     </MotionReveal>
                   </div>
 
                   <div className="hidden md:block relative h-[300px] overflow-hidden rounded-lg">
@@ -125,19 +125,19 @@ export default function WhatWeBuild({
                       fill
                       className="object-cover scale-[1.03] group-hover:scale-[1.05] transition-transform duration-500"
                     />
-                    <div className="absolute right-[30px] top-[90px] w-[320px]">
-                      <h3 className="text-[20px] font-semibold mb-4 ml-2 text-white">
-                        {card.heading}
-                      </h3>
-                      <ul className="space-y-2 text-[14px] leading-[1.4] text-[#E5E5E5]">
-                        {card.features.map((feature, fIdx) => (
-                          <li key={fIdx} className="flex gap-2 ml-4">
-                            <span>•</span>
-                            <span>{feature}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    <MotionReveal as="div" className="absolute right-[30px] top-[90px] w-[320px]" y={0} x={idx % 2 === 0 ? -30 : 30} delay={0.2} duration={0.7}>
+                       <h3 className="text-[20px] font-semibold mb-4 ml-2 text-white">
+                         {card.heading}
+                       </h3>
+                       <ul className="space-y-2 text-[14px] leading-[1.4] text-[#E5E5E5]">
+                         {card.features.map((feature, fIdx) => (
+                           <li key={fIdx} className="flex gap-2 ml-4">
+                             <span>•</span>
+                             <span>{feature}</span>
+                           </li>
+                         ))}
+                       </ul>
+                     </MotionReveal>
                   </div>
                 </div>
               ))}
@@ -169,26 +169,26 @@ export default function WhatWeBuild({
                 {overlapCards?.map((card, idx) => (
                   <div key={idx} className="w-full rounded-lg overflow-hidden group bg-slate-900/40 border border-slate-800 md:bg-transparent md:border-transparent">
                     {/* Mobile: stacked layout */}
-                      <div className="md:hidden relative h-[250px] overflow-hidden rounded-lg">
+                    <div className="md:hidden relative h-[250px] overflow-hidden rounded-lg">
                       <Image
                         src={card.image}
                         alt={card.title}
                         fill
                         className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
                       />
-                      <div className="absolute right-2 top-[85px] w-[240px]">
-                        <h3 className="text-[14px] font-semibold mb-3 ml-2 text-white whitespace-pre-line">
-                          {card.title}
-                        </h3>
-                        <ul className="space-y-1 text-[12px] leading-[1.3] text-[#E5E5E5]">
-                          {card.features.map((feature, fIdx) => (
-                            <li key={fIdx} className="flex gap-2 ml-2">
-                              <span>•</span>
-                              <span>{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                      <MotionReveal as="div" className="absolute right-2 top-[85px] w-[240px]" y={0} x={idx % 2 === 0 ? -30 : 30} delay={0.2} duration={0.7}>
+                         <h3 className="text-[14px] font-semibold mb-3 ml-2 text-white whitespace-pre-line">
+                           {card.title}
+                         </h3>
+                         <ul className="space-y-1 text-[12px] leading-[1.3] text-[#E5E5E5]">
+                           {card.features.map((feature, fIdx) => (
+                             <li key={fIdx} className="flex gap-2 ml-2">
+                               <span>•</span>
+                               <span>{feature}</span>
+                             </li>
+                           ))}
+                         </ul>
+                       </MotionReveal>
                     </div>
 
                     {/* Desktop: overlay layout */}
@@ -199,19 +199,19 @@ export default function WhatWeBuild({
                         fill
                         className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
                       />
-                      <div className="absolute right-[40px] top-[85px] w-[320px]">
-                        <h3 className="text-[20px] font-bold mb-4 ml-2 text-white whitespace-pre-line">
-                          {card.title}
-                        </h3>
-                        <ul className="space-y-2 text-[14px] leading-[1.4] text-[#E5E5E5]">
-                          {card.features.map((feature, fIdx) => (
-                            <li key={fIdx} className="flex gap-2 ml-4">
-                              <span>•</span>
-                              <span>{feature}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
+                      <MotionReveal as="div" className="absolute right-[40px] top-[85px] w-[320px]" y={0} x={idx % 2 === 0 ? -30 : 30} delay={0.2} duration={0.7}>
+                         <h3 className="text-[20px] font-bold mb-4 ml-2 text-white whitespace-pre-line">
+                           {card.title}
+                         </h3>
+                         <ul className="space-y-2 text-[14px] leading-[1.4] text-[#E5E5E5]">
+                           {card.features.map((feature, fIdx) => (
+                             <li key={fIdx} className="flex gap-2 ml-4">
+                               <span>•</span>
+                               <span>{feature}</span>
+                             </li>
+                           ))}
+                         </ul>
+                       </MotionReveal>
                     </div>
                   </div>
                 ))}
@@ -231,19 +231,19 @@ export default function WhatWeBuild({
                     fill
                     className="object-cover group-hover:scale-[1.03] transition-transform duration-500"
                   />
-                  <div className="absolute right-2 top-[80px] w-[240px]">
-                    <h3 className="text-[14px] font-semibold mb-3 ml-2 text-white">
-                      {card.heading}
-                    </h3>
-                    <ul className="space-y-1 text-[12px] leading-[1.3] text-[#E5E5E5]">
-                      {card.features.map((feature, fIdx) => (
-                        <li key={fIdx} className="flex gap-2 ml-2">
-                          <span>•</span>
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <MotionReveal as="div" className="absolute right-2 top-[80px] w-[240px]" y={0} x={idx % 2 === 0 ? -30 : 30} delay={0.2} duration={0.7}>
+                     <h3 className="text-[14px] font-semibold mb-3 ml-2 text-white">
+                       {card.heading}
+                     </h3>
+                     <ul className="space-y-1 text-[12px] leading-[1.3] text-[#E5E5E5]">
+                       {card.features.map((feature, fIdx) => (
+                         <li key={fIdx} className="flex gap-2 ml-2">
+                           <span>•</span>
+                           <span>{feature}</span>
+                         </li>
+                       ))}
+                     </ul>
+                   </MotionReveal>
                 </div>
 
                 {/* Desktop: overlay layout */}
@@ -254,24 +254,24 @@ export default function WhatWeBuild({
                     fill
                     className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.05]"
                   />
-                  <div className="absolute right-[40px] top-[85px] w-[320px]">
-                    <h3 className="text-[20px] font-bold mb-4 ml-2 text-white">
-                      {card.heading}
-                    </h3>
-                    <ul className="space-y-2 text-[14px] leading-[1.4] text-[#E5E5E5]">
-                      {card.features.map((feature, fIdx) => (
-                        <li key={fIdx} className="flex gap-2 ml-4">
-                          <span>•</span>
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <MotionReveal as="div" className="absolute right-[40px] top-[85px] w-[320px]" y={0} x={idx % 2 === 0 ? -30 : 30} delay={0.2} duration={0.7}>
+                     <h3 className="text-[20px] font-bold mb-4 ml-2 text-white">
+                       {card.heading}
+                     </h3>
+                     <ul className="space-y-2 text-[14px] leading-[1.4] text-[#E5E5E5]">
+                       {card.features.map((feature, fIdx) => (
+                         <li key={fIdx} className="flex gap-2 ml-4">
+                           <span>•</span>
+                           <span>{feature}</span>
+                         </li>
+                       ))}
+                     </ul>
+                   </MotionReveal>
                 </div>
               </div>
             ))}
           </div>
-        
+
         ) : (
           /* ITOM/SPM-style: 3x2 image grid with titles */
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
