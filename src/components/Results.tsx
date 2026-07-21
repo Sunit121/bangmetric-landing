@@ -87,7 +87,7 @@ export default function Results({
           {metrics.map((item, index) => (
             <div
               key={index}
-              className="group min-w-0 rounded-md bg-white border border-gray-200 p-3 md:p-4 lg:p-5 hover:bg-[#9383DC] hover:text-white hover:border-[#9383DC] transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#9383DC]/40 min-h-[160px] md:min-h-[180px]"
+              className="group min-w-0 rounded-md bg-white border border-gray-200 p-3 md:p-4 lg:p-5 hover:bg-[#9383DC] hover:text-white hover:border-[#9383DC] transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-[#9383DC]/40 min-h-[110px] md:min-h-[100px]"
             >
               <div className="mb-3 sm:mb-4 lg:mb-5 flex-shrink-0">
                 <Image
@@ -99,7 +99,7 @@ export default function Results({
                 />
               </div>
 
-              <MotionReveal as="p" className={`results-metric-text ${metricTextClassName} group-hover:text-white leading-snug text-[13px] md:text-[14px] lg:text-[15px]`}>
+              <MotionReveal as="p" className={`results-metric-text ${metricTextClassName} group-hover:text-white leading-snug !text-[14px] md:text-[14px] lg:text-[15px]`}>
                 {item.title}
               </MotionReveal>
             </div>
@@ -107,8 +107,8 @@ export default function Results({
 
           {/* Desktop highlight — inside grid, hidden on mobile */}
           {highlightText && (
-            <div className={`hidden md:flex col-span-2 ${highlightColSpan === 3 ? 'md:col-span-3' : highlightColSpan === 4 ? 'md:col-span-4' : 'md:col-span-2'} items-center justify-center md:p-4 lg:p-6 lg:pl-10 md:h-auto lg:h-[200px]`}>
-              <h3 className="text-[20px] lg:text-[28px] xl:text-[32px] font-bold text-green leading-snug">
+            <div className={`hidden md:flex col-span-2 ${highlightColSpan === 3 ? 'md:col-span-3' : highlightColSpan === 4 ? 'md:col-span-4' : 'md:col-span-2'} items-center justify-center md:p-4 lg:p-6 lg:pl-10 md:h-auto lg:h-[150px]`}>
+              <h3 className="text-white text-[18px] sm:text-[24px] md:text-[30px] lg:text-[25px] font-bold text-green leading-[1.1]">
                 {highlightText}
               </h3>
             </div>
@@ -118,7 +118,7 @@ export default function Results({
         {/* Mobile highlight — shown after cards on small screens */}
         {highlightText && (
           <div className="block md:hidden mt-6">
-            <h3 className="text-[22px] font-bold text-green leading-snug">
+            <h3 className="text-[22px] font-bold text-green leading-[1.1]">
               {highlightText}
             </h3>
           </div>

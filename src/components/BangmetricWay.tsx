@@ -66,11 +66,11 @@ export default function BangmetricWay({
                       <Image src={step.image} alt={step.title} fill className="object-cover" />
                     </div>
                   )}
-                  <h3 className="text-[20px] md:text-[22px] font-bold text-black md:min-w-[130px] shrink-0 leading-snug md:whitespace-pre-line">
+                  <h3 className="text-[18px] md:text-[20px] font-bold text-black md:min-w-[130px] shrink-0 leading-snug md:whitespace-pre-line">
                     {step.title}
                   </h3>
                   <div className="hidden md:block w-[1px] h-[60px] bg-black opacity-50 mx-5 shrink-0"></div>
-                  <p className="text-[16px] md:text-[18px] text-black leading-relaxed font-medium">
+                  <p className="!text-[14px] sm:text-[13px] leading-[1.5] font-medium">
                     {step.desc}
                   </p>
                 </div>

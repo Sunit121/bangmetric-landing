@@ -48,7 +48,7 @@ export default function Intro({
               <MotionReveal
                 key={index}
                 as="p"
-                className={index === 0 ? "text-lg md:text-xl leading-relaxed" : "text-base md:text-lg leading-relaxed"}
+                className={index === 0 ? "!text-[16px] sm:text-[16px] leading-[1.6]" : "!text-[16px] sm:text-[16px] leading-[1.6]"}
                 delay={index * 0.1}
               >
                 {text}

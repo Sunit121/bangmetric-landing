@@ -60,7 +60,7 @@ export default function ITOMWhyChoose({
             <MotionReveal as="h2" className="text-3xl sm:text-4xl md:text-[44px] text-black tracking-tight leading-[1.2] mb-6">
               {heading}
             </MotionReveal>
-            <MotionReveal as="div" className="text-[17px] md:text-[19px] text-black-800 font-medium leading-relaxed" delay={0.1}>
+            <MotionReveal as="div" className="font-helvetica font-normal text-[14px] sm:text-[16px] md:text-[18px] leading-[1.4] text-black" delay={0.1}>
               {paragraphs.map((p, i) => (
                 <div key={i}>{p}</div>
               ))}
@@ -73,7 +73,7 @@ export default function ITOMWhyChoose({
                     <div className="flex-shrink-0 mr-4 md:mr-6 mt-1">
                       <Image src="/images/star-icon.png" alt="Star pointer" width={24} height={24} className="object-contain" />
                     </div>
-                    <div className="text-[17px] md:text-[19px] text-black-800 leading-relaxed font-medium">
+                    <div className="font-helvetica font-normal text-[14px] sm:text-[16px] md:text-[18px] leading-[1.4] text-black">
                       <strong className="font-bold text-black">{pt.title}</strong>{" "}
                       <span className="text-black-700">{pt.desc}</span>
                     </div>
@@ -98,7 +98,7 @@ export default function ITOMWhyChoose({
                     <div className="flex-shrink-0 mr-4 md:mr-6 mt-1">
                       <Image src="/images/star-icon.png" alt="Star pointer" width={24} height={24} className="object-contain" />
                     </div>
-                    <div className="text-[17px] md:text-[19px] text-black-800 leading-relaxed font-medium">
+                    <div className="font-helvetica font-normal text-[14px] sm:text-[16px] md:text-[18px] leading-[1.4] text-black">
                       <strong className="font-bold text-black">{pt.title}</strong>{" "}
                       <span className="text-black-700">{pt.desc}</span>
                     </div>

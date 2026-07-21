@@ -144,11 +144,11 @@ export default function ThinkDifferently({ nodes = defaultNodes, variant = "hori
                         <CircleDot size={24} />
                       </div>
                       <div className="pl-3">
-                        <MotionReveal as="p" className="node-text font-bold text-black leading-snug">
+                        <MotionReveal as="p" className="node-text font-bold text-black leading-snug !text-[14px]">
                           {node.bold}
                         </MotionReveal>
                         {node.detail && (
-                          <MotionReveal as="p" className="node-text text-black leading-snug mt-1" delay={0.05}>
+                          <MotionReveal as="p" className="node-text text-black leading-snug mt-1 !text-[14px]" delay={0.05}>
                             {node.detail}
                           </MotionReveal>
                         )}
@@ -278,11 +278,11 @@ export default function ThinkDifferently({ nodes = defaultNodes, variant = "hori
                 <React.Fragment key={idx}>
                   {/* Label */}
                   <div className="absolute" style={{ left: pos.labelLeft, top: pos.labelTop, width: pos.labelWidth }}>
-                    <MotionReveal as="p" className="node-text font-bold text-black leading-snug">
+                    <MotionReveal as="p" className="node-text font-bold text-black leading-snug !text-[14px]">
                       {node.bold}
                     </MotionReveal>
                     {node.detail && (
-                      <MotionReveal as="p" className="node-text text-black leading-snug" delay={0.05}>
+                      <MotionReveal as="p" className="node-text text-black leading-snug !text-[14px]" delay={0.05}>
                         {node.detail}
                       </MotionReveal>
                     )}

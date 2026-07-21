@@ -94,7 +94,7 @@ export default function Jumpstarts({
           {cards.map((card, index) => (
             <div
               key={index}
-              className="group jumpstart-card rounded-2xl p-8 sm:p-10 flex flex-col justify-between min-h-[260px] border-2 border-[#d1d5db] hover:bg-[#9F9EF2 ] hover:border-[#9F9EF2] transition-all "
+              className="group jumpstart-card rounded-2xl p-8 sm:p-10 flex flex-col justify-between min-h-[180px] border-2 border-[#d1d5db] hover:bg-[#9F9EF2 ] hover:border-[#9F9EF2] transition-all "
               style={{ background: "transparent" }}
             >
               <div>
