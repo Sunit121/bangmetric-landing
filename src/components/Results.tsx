@@ -69,7 +69,7 @@ export default function Results({
 }: ResultsProps) {
   return (
     <section id="results" className="pt-16 pb-12 sm:pt-20 sm:pb-16 lg:pt-24 lg:pb-20 bg-white overflow-hidden">
-      <div className="min-container">
+      <div className="max-w-[1100px] mx-auto px-4 sm:px-6 md:px-10 lg:px-16 py-14 sm:py-20 md:py-24">
 
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12 lg:mb-16">
